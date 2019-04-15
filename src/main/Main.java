@@ -1,5 +1,6 @@
 package main;
 
+import gui.Login;
 import com.alee.laf.WebLookAndFeel;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Inicializando base de datos", "Inicializando", JOptionPane.WARNING_MESSAGE);
                 }
                 //login
-                JOptionPane.showMessageDialog(null, "LISTO PARA INICIAR APLICACIÓN!");
+                 new Login().setVisible(true);
             }
         });
     }
