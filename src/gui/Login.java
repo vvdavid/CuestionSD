@@ -130,18 +130,10 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TextPasswordFocusLost
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        // You should work with UI (including installing L&F) inside Event Dispatch Thread (EDT)
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                // Install WebLaF as application L&F
                 WebLookAndFeel.install();
-
-                // Create you Swing application here
-                // JFrame frame = ...
                 new Login().setVisible(true);
             }
         });
