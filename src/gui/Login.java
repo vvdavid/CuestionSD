@@ -26,12 +26,6 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
 
         BotonLog.setText("Ingresar");
-        BotonLog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresar(evt);
-                ingresar2(evt);
-            }
-        });
 
         BotonOlvidado.setText("Olvidé mi contraseña");
 
@@ -135,14 +129,6 @@ public class Login extends javax.swing.JFrame {
             TextPassword.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_TextPasswordFocusLost
-
-    private void ingresar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresar
-
-    private void ingresar2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar2
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresar2
 
     /**
      * @param args the command line arguments
