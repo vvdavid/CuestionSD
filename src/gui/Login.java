@@ -213,7 +213,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresarJBActionPerformed
 
     private void ingresar() {
-        throw new UnsupportedOperationException("Not implemented, yet");
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
