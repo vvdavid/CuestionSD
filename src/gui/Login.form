@@ -29,8 +29,14 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Acerca de..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -66,13 +72,13 @@
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="BotonOlvidado" min="-2" max="-2" attributes="0"/>
+                      <Component id="olvideJB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="BotonLog" min="-2" max="-2" attributes="0"/>
+                      <Component id="ingresarJB" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel1" max="32767" attributes="0"/>
-                  <Component id="TextUsuario" max="32767" attributes="0"/>
-                  <Component id="TextPassword" max="32767" attributes="0"/>
+                  <Component id="usuarioJTF" max="32767" attributes="0"/>
+                  <Component id="passwordJPF" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
@@ -84,31 +90,37 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="TextUsuario" min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="usuarioJTF" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="TextPassword" min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="passwordJPF" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BotonOlvidado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BotonLog" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="olvideJB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ingresarJB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="BotonOlvidado">
+    <Component class="javax.swing.JButton" name="olvideJB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Olvid&#xe9; mi contrase&#xf1;a"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="olvideJBActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BotonLog">
+    <Component class="javax.swing.JButton" name="ingresarJB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingresar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresarJBActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="TextUsuario">
+    <Component class="javax.swing.JTextField" name="usuarioJTF">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
@@ -122,9 +134,8 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="TextUsuarioFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="TextUsuarioFocusLost"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextUsuarioActionPerformed"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="usuarioJTFFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="usuarioJTFFocusLost"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -135,7 +146,7 @@
         <Property name="text" type="java.lang.String" value="Bienvenido, inicia sesi&#xf3;n para continuar."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="TextPassword">
+    <Component class="javax.swing.JPasswordField" name="passwordJPF">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
@@ -143,8 +154,9 @@
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="TextPasswordFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="TextPasswordFocusLost"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passwordJPFFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passwordJPFFocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordJPFActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
