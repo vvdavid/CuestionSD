@@ -229,13 +229,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField usuarioJTF;
     // End of variables declaration//GEN-END:variables
 
-    private class LoginDriver {
-
-        private Login v;
-
-        public LoginDriver(Login v) {
-            this.v = v;
-        }
-
-    }
 }
