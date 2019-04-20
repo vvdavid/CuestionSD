@@ -5,7 +5,12 @@ import com.alee.extended.window.WebPopOver;
 import com.alee.laf.label.WebLabel;
 import com.alee.laf.optionpane.WebOptionPane;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import jdbc.UsuarioJDBC;
+import pojos.Usuario;
+import tools.GUITools;
 
 public class Login extends javax.swing.JFrame {
 
@@ -214,6 +219,14 @@ public class Login extends javax.swing.JFrame {
 
     private void ingresar() {
         
+        JFrame next;
+        Usuario usuario = UsuarioJDBC.ingresa(usuarioJTF.getText(), GUITools.encrypt(passwordJPF.getText()));
+        if (usuario == null) {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        next = usuario.getId() == 0 ? new Admin() : null; //TODO agregar new menu();
+        GUITools.openJFrame(this, next);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
