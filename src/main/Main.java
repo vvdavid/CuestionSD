@@ -21,7 +21,7 @@ public class Main {
 
                 //check if bd exists, if not, create it, 
                 char s = File.separatorChar;
-                File bd = new File(System.getenv("APPDATA") + s + "cuestion" + s + "cuestion_data");
+                File bd = new File(System.getenv("APPDATA") + s + "Cuestion" + s + "cuestion_data");
                 if (!bd.exists()) {
                     bd.mkdirs();
                     copy(getClass().getResourceAsStream("/resources/cuestion_data"), bd.getAbsolutePath());
