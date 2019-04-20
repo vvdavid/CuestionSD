@@ -1,6 +1,7 @@
 package pojos;
 
 public class Usuario {
+
     private int id;
     private String nombre;
     private String pass;
@@ -13,6 +14,11 @@ public class Usuario {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return id + ", " + nombre;
     }
 
 }
