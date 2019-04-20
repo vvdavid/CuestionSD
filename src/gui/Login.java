@@ -19,7 +19,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         //inicializa passwordJPF a vacio
         passwordJPF.setEchoChar((char) 0);
         passwordJPF.setText("Contraseña");
@@ -218,7 +218,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresarJBActionPerformed
 
     private void ingresar() {
-        
         JFrame next;
         Usuario usuario = UsuarioJDBC.ingresa(usuarioJTF.getText(), GUITools.encrypt(passwordJPF.getText()));
         if (usuario == null) {
