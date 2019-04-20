@@ -33,8 +33,8 @@ public class Main {
             }
         });
     }
-    
-    public static boolean copy(InputStream source , String destination) {
+
+    public static boolean copy(InputStream source, String destination) {
         boolean succeess = true;
         try {
             Files.copy(source, Paths.get(destination), StandardCopyOption.REPLACE_EXISTING);
