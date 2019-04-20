@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import tools.GUITools;
 
 public class Main {
 
@@ -28,7 +29,7 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Inicializando base de datos", "Inicializando", JOptionPane.WARNING_MESSAGE);
                 }
                 //login
-                 new Login().setVisible(true);
+                GUITools.openJFrame(null, new Login());
             }
         });
     }
