@@ -270,7 +270,7 @@ public class Admin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 WebLookAndFeel.install();
-                new Admin().setVisible(true);
+                GUITools.openJFrame(null, new Admin());
             }
         });
     }
