@@ -4,6 +4,7 @@ import com.alee.laf.WebLookAndFeel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import tools.GUITools;
 import tools.GoBack;
 
@@ -22,6 +23,8 @@ public class Admin extends javax.swing.JFrame {
 
     private void addListeners() {
         goBackJB.addActionListener(driver);
+        adminExamenesJB.addActionListener(driver);
+        adminUsuariosJB.addActionListener(driver);
     }
 
     /**
@@ -33,23 +36,23 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        examenJP = new javax.swing.JPanel();
+        examenesJP = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaExamenJT = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         agregarExamenesJB = new javax.swing.JButton();
         modificarExamenesJB = new javax.swing.JButton();
         eliminarExamenesJB = new javax.swing.JButton();
-        usuarioJP = new javax.swing.JPanel();
+        usuariosJP = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaUsuariosJT = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         agregarUsuariosJB = new javax.swing.JButton();
         modificarUsuariosJB = new javax.swing.JButton();
         eliminarUsuariosJB1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        adminExamenesJB = new javax.swing.JButton();
+        adminUsuariosJB = new javax.swing.JButton();
+        panelJTP = new javax.swing.JTabbedPane();
         goBackJB = new javax.swing.JButton();
 
         tablaExamenJT.setModel(new javax.swing.table.DefaultTableModel(
@@ -96,7 +99,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(agregarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(eliminarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -113,22 +116,22 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout examenJPLayout = new javax.swing.GroupLayout(examenJP);
-        examenJP.setLayout(examenJPLayout);
-        examenJPLayout.setHorizontalGroup(
-            examenJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(examenJPLayout.createSequentialGroup()
+        javax.swing.GroupLayout examenesJPLayout = new javax.swing.GroupLayout(examenesJP);
+        examenesJP.setLayout(examenesJPLayout);
+        examenesJPLayout.setHorizontalGroup(
+            examenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(examenesJPLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        examenJPLayout.setVerticalGroup(
-            examenJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, examenJPLayout.createSequentialGroup()
+        examenesJPLayout.setVerticalGroup(
+            examenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, examenesJPLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(examenJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(examenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
@@ -163,6 +166,7 @@ public class Admin extends javax.swing.JFrame {
         }
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
+        jPanel2.setPreferredSize(new java.awt.Dimension(178, 237));
 
         agregarUsuariosJB.setText("Agregar");
 
@@ -178,7 +182,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(agregarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(eliminarUsuariosJB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -195,22 +199,22 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout usuarioJPLayout = new javax.swing.GroupLayout(usuarioJP);
-        usuarioJP.setLayout(usuarioJPLayout);
-        usuarioJPLayout.setHorizontalGroup(
-            usuarioJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usuarioJPLayout.createSequentialGroup()
+        javax.swing.GroupLayout usuariosJPLayout = new javax.swing.GroupLayout(usuariosJP);
+        usuariosJP.setLayout(usuariosJPLayout);
+        usuariosJPLayout.setHorizontalGroup(
+            usuariosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuariosJPLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        usuarioJPLayout.setVerticalGroup(
-            usuarioJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioJPLayout.createSequentialGroup()
+        usuariosJPLayout.setVerticalGroup(
+            usuariosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuariosJPLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(usuarioJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(usuariosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -219,11 +223,11 @@ public class Admin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cuestion - Administrador");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/test.png"))); // NOI18N
-        jButton1.setText("Administrar examenes");
+        adminExamenesJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/test.png"))); // NOI18N
+        adminExamenesJB.setText("Administrar examenes");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
-        jButton2.setText("Administrar usuarios");
+        adminUsuariosJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
+        adminUsuariosJB.setText("Administrar usuarios");
 
         goBackJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         goBackJB.setText("Salir");
@@ -235,13 +239,13 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(panelJTP)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(adminExamenesJB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
-                        .addComponent(goBackJB)))
+                        .addComponent(adminUsuariosJB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                        .addComponent(goBackJB, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -249,11 +253,11 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(adminExamenesJB)
+                    .addComponent(adminUsuariosJB)
                     .addComponent(goBackJB))
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addComponent(panelJTP, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -297,24 +301,24 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminExamenesJB;
+    private javax.swing.JButton adminUsuariosJB;
     private javax.swing.JButton agregarExamenesJB;
     private javax.swing.JButton agregarUsuariosJB;
     private javax.swing.JButton eliminarExamenesJB;
     private javax.swing.JButton eliminarUsuariosJB1;
-    private javax.swing.JPanel examenJP;
+    private javax.swing.JPanel examenesJP;
     private javax.swing.JButton goBackJB;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton modificarExamenesJB;
     private javax.swing.JButton modificarUsuariosJB;
+    private javax.swing.JTabbedPane panelJTP;
     private javax.swing.JTable tablaExamenJT;
     private javax.swing.JTable tablaUsuariosJT;
-    private javax.swing.JPanel usuarioJP;
+    private javax.swing.JPanel usuariosJP;
     // End of variables declaration//GEN-END:variables
 
     private class Driver implements ActionListener, GoBack {
@@ -330,6 +334,10 @@ public class Admin extends javax.swing.JFrame {
             JButton src = (JButton) ae.getSource();
             if (src == v.goBackJB) {
                 goBack();
+            } else if (src == v.adminExamenesJB) {
+                addToPanel(v.examenesJP, src);
+            } else if (src == v.adminUsuariosJB) {
+                addToPanel(v.usuariosJP, src);
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -338,6 +346,12 @@ public class Admin extends javax.swing.JFrame {
         public void goBack() {
             GUITools.openJFrame(v, new Login());
             System.gc();
+        }
+
+        private void addToPanel(JPanel newPanel, JButton src) {
+            panelJTP.add(newPanel);
+            panelJTP.setTitleAt(panelJTP.getTabCount() - 1, src.getText());
+            panelJTP.setIconAt(panelJTP.getTabCount() - 1, src.getIcon());
         }
 
     }
