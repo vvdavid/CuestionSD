@@ -1,12 +1,27 @@
 package gui;
 
+import com.alee.laf.WebLookAndFeel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import tools.GUITools;
+import tools.GoBack;
+
 public class Admin extends javax.swing.JFrame {
+
+    private Driver driver;
 
     /**
      * Creates new form Admin
      */
     public Admin() {
+        this.driver = new Driver(this);
         initComponents();
+        addListeners();
+    }
+
+    private void addListeners() {
+        goBackJB.addActionListener(driver);
     }
 
     /**
@@ -35,6 +50,7 @@ public class Admin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        goBackJB = new javax.swing.JButton();
 
         tablaExamenJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,6 +225,9 @@ public class Admin extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
         jButton2.setText("Administrar usuarios");
 
+        goBackJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        goBackJB.setText("Salir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -221,7 +240,8 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
-                        .addGap(0, 385, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                        .addComponent(goBackJB)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -230,7 +250,8 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(goBackJB))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                 .addContainerGap())
@@ -281,6 +302,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton eliminarExamenesJB;
     private javax.swing.JButton eliminarUsuariosJB1;
     private javax.swing.JPanel examenJP;
+    private javax.swing.JButton goBackJB;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
@@ -295,12 +317,27 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel usuarioJP;
     // End of variables declaration//GEN-END:variables
 
-    private class AdminDriver {
+    private class Driver implements ActionListener, GoBack {
 
         private Admin v;
 
-        public AdminDriver(Admin v) {
+        public Driver(Admin v) {
             this.v = v;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            JButton src = (JButton) ae.getSource();
+            if (src == v.goBackJB) {
+                goBack();
+            } else {
+                throw new UnsupportedOperationException();
+            }
+        }
+
+        public void goBack() {
+            GUITools.openJFrame(v, new Login());
+            System.gc();
         }
 
     }
