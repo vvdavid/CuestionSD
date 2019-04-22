@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import jdbc.ExamenJDBC;
+import jdbc.UsuarioJDBC;
 import tools.GUITools;
 import tools.GoBack;
 
@@ -17,8 +19,8 @@ public class Admin extends javax.swing.JFrame {
      * Creates new form Admin
      */
     public Admin() {
-        this.driver = new Driver();
         initComponents();
+        this.driver = new Driver();
         addListeners();
     }
 
@@ -338,7 +340,8 @@ public class Admin extends javax.swing.JFrame {
         }
 
         private void cargaTablas() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            ExamenJDBC.cargaTabla(tablaExamenJT);
+            UsuarioJDBC.cargaTabla(tablaUsuariosJT);
         }
 
         @Override
