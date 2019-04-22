@@ -379,6 +379,7 @@ public class Admin extends javax.swing.JFrame {
             panelJTP.add(newPanel);
             panelJTP.setTitleAt(panelJTP.getTabCount() - 1, src.getText());
             panelJTP.setIconAt(panelJTP.getTabCount() - 1, src.getIcon());
+            panelJTP.setSelectedIndex(panelJTP.getTabCount() - 1);
         }
 
         private boolean haySeleccion(JTable tablaExamenJT) {
