@@ -83,9 +83,12 @@ public class Admin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaExamenJT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaExamenJT.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaExamenJT);
         if (tablaExamenJT.getColumnModel().getColumnCount() > 0) {
             tablaExamenJT.getColumnModel().getColumn(0).setMaxWidth(45);
+            tablaExamenJT.getColumnModel().getColumn(2).setMaxWidth(80);
         }
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
@@ -165,6 +168,8 @@ public class Admin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaUsuariosJT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaUsuariosJT.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tablaUsuariosJT);
         if (tablaUsuariosJT.getColumnModel().getColumnCount() > 0) {
             tablaUsuariosJT.getColumnModel().getColumn(0).setMaxWidth(45);
