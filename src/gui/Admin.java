@@ -16,7 +16,7 @@ public class Admin extends javax.swing.JFrame {
      * Creates new form Admin
      */
     public Admin() {
-        this.driver = new Driver(this);
+        this.driver = new Driver();
         initComponents();
         addListeners();
     }
@@ -323,29 +323,22 @@ public class Admin extends javax.swing.JFrame {
 
     private class Driver implements ActionListener, GoBack {
 
-        private Admin v;
-
-        public Driver(Admin v) {
-            this.v = v;
-        }
-
         @Override
         public void actionPerformed(ActionEvent ae) {
             JButton src = (JButton) ae.getSource();
-            if (src == v.goBackJB) {
+            if (src == goBackJB) {
                 goBack();
-            } else if (src == v.adminExamenesJB) {
-                addToPanel(v.examenesJP, src);
-            } else if (src == v.adminUsuariosJB) {
-                addToPanel(v.usuariosJP, src);
+            } else if (src == adminExamenesJB) {
+                addToPanel(examenesJP, src);
+            } else if (src == adminUsuariosJB) {
+                addToPanel(usuariosJP, src);
             } else {
                 throw new UnsupportedOperationException();
             }
         }
 
         public void goBack() {
-            GUITools.openJFrame(v, new Login());
-            System.gc();
+            GUITools.openJFrame(Admin.this, new Login());
         }
 
         private void addToPanel(JPanel newPanel, JButton src) {
