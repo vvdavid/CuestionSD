@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import tools.GUITools;
 import tools.GoBack;
 
@@ -83,9 +82,7 @@ public class Admin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaExamenJT.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(tablaExamenJT);
-        tablaExamenJT.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tablaExamenJT.getColumnModel().getColumnCount() > 0) {
             tablaExamenJT.getColumnModel().getColumn(0).setMaxWidth(45);
         }
