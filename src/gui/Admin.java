@@ -167,9 +167,7 @@ public class Admin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaUsuariosJT.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(tablaUsuariosJT);
-        tablaUsuariosJT.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tablaUsuariosJT.getColumnModel().getColumnCount() > 0) {
             tablaUsuariosJT.getColumnModel().getColumn(0).setMaxWidth(45);
         }
