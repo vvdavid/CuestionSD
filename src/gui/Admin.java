@@ -26,6 +26,10 @@ public class Admin extends javax.swing.JFrame {
         goBackJB.addActionListener(driver);
         adminExamenesJB.addActionListener(driver);
         adminUsuariosJB.addActionListener(driver);
+        //panel examenes
+        agregarExamenesJB.addActionListener(driver);
+        modificarExamenesJB.addActionListener(driver);
+        eliminarExamenesJB.addActionListener(driver);
     }
 
     /**
@@ -337,6 +341,19 @@ public class Admin extends javax.swing.JFrame {
                 addToPanel(examenesJP, src);
             } else if (src == adminUsuariosJB) {
                 addToPanel(usuariosJP, src);
+            } // panel examen
+            else if (src == agregarExamenesJB) {
+                if (haySeleccion(tablaExamenJT)) {
+                    handleAgregarExamenes();
+                }
+            } else if (src == modificarExamenesJB) {
+                if (haySeleccion(tablaExamenJT)) {
+                    handleModificarExamenes();
+                }
+            } else if (src == eliminarExamenesJB) {
+                if (haySeleccion(tablaExamenJT)) {
+                    handleEliminarExamenes();
+                }
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -350,6 +367,22 @@ public class Admin extends javax.swing.JFrame {
             panelJTP.add(newPanel);
             panelJTP.setTitleAt(panelJTP.getTabCount() - 1, src.getText());
             panelJTP.setIconAt(panelJTP.getTabCount() - 1, src.getIcon());
+        }
+
+        private boolean haySeleccion(JTable tablaExamenJT) {
+            return tablaExamenJT.getSelectedRow() != -1;
+        }
+
+        private void handleAgregarExamenes() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        private void handleModificarExamenes() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        private void handleEliminarExamenes() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
     }
