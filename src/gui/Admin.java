@@ -355,9 +355,7 @@ public class Admin extends javax.swing.JFrame {
                 addToPanel(usuariosJP, src);
             } // panel examen
             else if (src == agregarExamenesJB) {
-                if (haySeleccion(tablaExamenJT)) {
                     handleAgregarExamenes();
-                }
             } else if (src == modificarExamenesJB) {
                 if (haySeleccion(tablaExamenJT)) {
                     handleModificarExamenes();
