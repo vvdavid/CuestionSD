@@ -22,7 +22,6 @@ public class ExamenJDBC {
                     rs.getBoolean(3)
                 });
             }
-            System.out.println(model);
         } catch (SQLException ex) {
             System.err.println(ex);
         }
