@@ -333,6 +333,14 @@ public class Admin extends javax.swing.JFrame {
 
     private class Driver implements ActionListener, GoBack {
 
+        private Driver() {
+            cargaTablas();
+        }
+
+        private void cargaTablas() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
         @Override
         public void actionPerformed(ActionEvent ae) {
             JButton src = (JButton) ae.getSource();
