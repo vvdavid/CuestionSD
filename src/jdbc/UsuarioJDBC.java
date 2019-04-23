@@ -22,7 +22,9 @@ public class UsuarioJDBC {
         Usuario usuario = null;
         try {
             PreparedStatement ps = DBTools.getConnection().prepareStatement(
-                    "SELECT * FROM usuario where nombre= \"" + nombre + "\" AND pass=\"" + encodedPass + "\"");
+                    "SELECT * FROM usuario where nombre=? AND pass=?");
+            ps.setString(1, nombre);
+            ps.setString(2, encodedPass);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3));
