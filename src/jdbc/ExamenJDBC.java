@@ -15,6 +15,7 @@ public class ExamenJDBC {
                         "SELECT * FROM examen");
                 ResultSet rs = ps.executeQuery();) {
             DefaultTableModel model = (DefaultTableModel) tablaExamenJT.getModel();
+            model.setRowCount(0);
             while (rs.next()) {
                 model.addRow(new Object[]{
                     rs.getInt(1),
