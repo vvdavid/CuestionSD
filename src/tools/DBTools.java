@@ -3,7 +3,13 @@ package tools;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 public class DBTools {
 
@@ -22,4 +28,15 @@ public class DBTools {
         }
         return con;
     }
+
+    public static void main(String[] args) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement("DELETE FROM examen WHERE id=1");) {
+            int r = ps.executeUpdate();
+            System.out.println("r = " + r);
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
 }
