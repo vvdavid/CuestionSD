@@ -22,6 +22,9 @@ public class DBTools {
         if (con == null) {
             try {
                 con = DriverManager.getConnection("jdbc:sqlite:" + path);
+                PreparedStatement ps = con.prepareStatement("PRAGMA foreign_keys = ON");
+                ps.execute();
+                ps.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
             }
