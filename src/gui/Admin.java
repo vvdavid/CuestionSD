@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import jdbc.ExamenJDBC;
 import jdbc.UsuarioJDBC;
+import tools.DBTools;
 import tools.GUITools;
 import tools.GoBack;
 
@@ -355,7 +356,7 @@ public class Admin extends javax.swing.JFrame {
                 addToPanel(usuariosJP, src);
             } // panel examen
             else if (src == agregarExamenesJB) {
-                    handleAgregarExamenes();
+                handleAgregarExamenes();
             } else if (src == modificarExamenesJB) {
                 if (haySeleccion(tablaExamenJT)) {
                     handleModificarExamenes();
@@ -393,7 +394,9 @@ public class Admin extends javax.swing.JFrame {
         }
 
         private void handleEliminarExamenes() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            DBTools.elimina("examen", "reactivo", "idExamen", "Los reactivos asociados con este examen también se eliminarán, ¿continuar?",
+                    (int) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 0));
+            ExamenJDBC.cargaTabla(tablaExamenJT);
         }
 
     }
