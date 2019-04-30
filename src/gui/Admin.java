@@ -33,6 +33,9 @@ public class Admin extends javax.swing.JFrame {
         agregarExamenesJB.addActionListener(driver);
         modificarExamenesJB.addActionListener(driver);
         eliminarExamenesJB.addActionListener(driver);
+        //panel administracion
+        cancelarAgregarExamenJB.addActionListener(driver);
+        guardarAgregarExamenJB.addActionListener(driver);
     }
 
     /**
@@ -58,6 +61,14 @@ public class Admin extends javax.swing.JFrame {
         agregarUsuariosJB = new javax.swing.JButton();
         modificarUsuariosJB = new javax.swing.JButton();
         eliminarUsuariosJB1 = new javax.swing.JButton();
+        verExamenesJP = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        idAgregarExamenJTF = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        tituloAgregarExamenJTF = new javax.swing.JTextField();
+        cancelarAgregarExamenJB = new javax.swing.JButton();
+        guardarAgregarExamenJB = new javax.swing.JButton();
+        activoAgregarExamenJCB = new javax.swing.JCheckBox();
         adminExamenesJB = new javax.swing.JButton();
         adminUsuariosJB = new javax.swing.JButton();
         panelJTP = new javax.swing.JTabbedPane();
@@ -233,6 +244,61 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel1.setText("ID");
+
+        idAgregarExamenJTF.setEnabled(false);
+
+        jLabel2.setText("Título:");
+
+        cancelarAgregarExamenJB.setText("Cancelar");
+
+        guardarAgregarExamenJB.setText("Guardar");
+
+        activoAgregarExamenJCB.setText("Activo");
+
+        javax.swing.GroupLayout verExamenesJPLayout = new javax.swing.GroupLayout(verExamenesJP);
+        verExamenesJP.setLayout(verExamenesJPLayout);
+        verExamenesJPLayout.setHorizontalGroup(
+            verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verExamenesJPLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(verExamenesJPLayout.createSequentialGroup()
+                        .addGroup(verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloAgregarExamenJTF)
+                            .addComponent(idAgregarExamenJTF)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, verExamenesJPLayout.createSequentialGroup()
+                        .addGap(0, 117, Short.MAX_VALUE)
+                        .addComponent(cancelarAgregarExamenJB)
+                        .addGap(18, 18, 18)
+                        .addComponent(guardarAgregarExamenJB))
+                    .addComponent(activoAgregarExamenJCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
+        );
+        verExamenesJPLayout.setVerticalGroup(
+            verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verExamenesJPLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(idAgregarExamenJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tituloAgregarExamenJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(activoAgregarExamenJCB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(verExamenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarAgregarExamenJB)
+                    .addComponent(cancelarAgregarExamenJB))
+                .addGap(15, 15, 15))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cuestion - Administrador");
 
@@ -314,14 +380,20 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox activoAgregarExamenJCB;
     private javax.swing.JButton adminExamenesJB;
     private javax.swing.JButton adminUsuariosJB;
     private javax.swing.JButton agregarExamenesJB;
     private javax.swing.JButton agregarUsuariosJB;
+    private javax.swing.JButton cancelarAgregarExamenJB;
     private javax.swing.JButton eliminarExamenesJB;
     private javax.swing.JButton eliminarUsuariosJB1;
     private javax.swing.JPanel examenesJP;
     private javax.swing.JButton goBackJB;
+    private javax.swing.JButton guardarAgregarExamenJB;
+    private javax.swing.JTextField idAgregarExamenJTF;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -331,7 +403,9 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane panelJTP;
     private javax.swing.JTable tablaExamenJT;
     private javax.swing.JTable tablaUsuariosJT;
+    private javax.swing.JTextField tituloAgregarExamenJTF;
     private javax.swing.JPanel usuariosJP;
+    private javax.swing.JPanel verExamenesJP;
     // End of variables declaration//GEN-END:variables
 
     private class Driver implements ActionListener, GoBack {
