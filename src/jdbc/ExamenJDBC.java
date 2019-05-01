@@ -28,4 +28,15 @@ public class ExamenJDBC {
         }
     }
 
+    public static int agrega(String titulo, boolean activo) {
+        try (PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                "INSERT INTO examen (titulo, activo) VALUES (?, ?)");) {
+            ps.setString(1, titulo);
+            ps.setBoolean(2, activo);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return 0;
+    }
 }
