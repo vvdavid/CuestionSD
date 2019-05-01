@@ -249,6 +249,7 @@ public class Admin extends javax.swing.JFrame {
         verExamenJD.setModal(true);
         verExamenJD.setResizable(false);
 
+        activoAgregarExamenJCB.setSelected(true);
         activoAgregarExamenJCB.setText("Activo");
 
         jLabel3.setText("ID");
