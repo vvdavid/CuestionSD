@@ -489,7 +489,9 @@ public class Admin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(Admin.this, "Debe escribir un título para el examen", "Error", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            ExamenJDBC.agrega(titulo, activoAgregarExamenJCB.isSelected());
+            if (ExamenJDBC.agrega(titulo, activoAgregarExamenJCB.isSelected()) != 1) {
+                JOptionPane.showMessageDialog(Admin.this, "Error agregando examen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
             ExamenJDBC.cargaTabla(tablaExamenJT);
             verExamenJD.setVisible(false);
         }
