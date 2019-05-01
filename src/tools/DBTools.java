@@ -46,9 +46,7 @@ public class DBTools {
                 psDelete.setInt(1, id);
                 int r = psDelete.executeUpdate();
                 psDelete.close();
-                if (r > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro eliminado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                } else {
+                if (r <= 0) {
                     JOptionPane.showMessageDialog(null, "Error eliminando " + table, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
