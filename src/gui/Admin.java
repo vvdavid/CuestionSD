@@ -498,7 +498,22 @@ public class Admin extends javax.swing.JFrame {
         }
 
         private void handleModificarExamenes() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //variables
+            int id = (int) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 0);
+            String titulo = (String) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 1);
+            boolean activo = (boolean) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 2);
+
+            //presentation
+            verExamenJD.setTitle("Modificar examen");
+
+            idAgregarExamenJTF.setText(id + "");
+            tituloAgregarExamenJTF.setText(titulo);
+            tituloAgregarExamenJTF.requestFocus();
+            activoAgregarExamenJCB.setSelected(activo);
+
+            verExamenJD.setLocationRelativeTo(Admin.this);
+            verExamenJD.setVisible(true);
+
         }
 
         private void handleEliminarExamenes() {
