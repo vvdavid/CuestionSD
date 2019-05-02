@@ -69,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         usuarioJTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        usuarioJTF.setForeground(new java.awt.Color(153, 153, 153));
+        usuarioJTF.setForeground(new java.awt.Color(0, 0, 0));
         usuarioJTF.setToolTipText("");
         usuarioJTF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
