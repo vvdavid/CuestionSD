@@ -438,7 +438,7 @@ public class Admin extends javax.swing.JFrame {
                 addToPanel(usuariosJP, src);
             } // panel examen
             else if (src == guardarAgregarExamenJB) {
-                agregaExamen();
+                guarda(src.getText());
             } else if (src == cancelarAgregarExamenJB) {
                 verExamenJD.setVisible(false);
             } else if (src == agregarExamenesJB) {
@@ -475,6 +475,7 @@ public class Admin extends javax.swing.JFrame {
             //presentation
             verExamenJD.setTitle("Agregar examen");
 
+            guardarAgregarExamenJB.setText("Agregar");
             idAgregarExamenJTF.setText("");
             tituloAgregarExamenJTF.setText("");
             tituloAgregarExamenJTF.requestFocus();
@@ -482,6 +483,38 @@ public class Admin extends javax.swing.JFrame {
 
             verExamenJD.setLocationRelativeTo(Admin.this);
             verExamenJD.setVisible(true);
+        }
+
+        private void handleModificarExamenes() {
+            //variables
+            int id = (int) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 0);
+            String titulo = (String) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 1);
+            boolean activo = (boolean) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 2);
+
+            //presentation
+            verExamenJD.setTitle("Modificar examen");
+
+            guardarAgregarExamenJB.setText("Modificar");
+            idAgregarExamenJTF.setText(id + "");
+            tituloAgregarExamenJTF.setText(titulo);
+            tituloAgregarExamenJTF.requestFocus();
+            activoAgregarExamenJCB.setSelected(activo);
+
+            verExamenJD.setLocationRelativeTo(Admin.this);
+            verExamenJD.setVisible(true);
+        }
+
+        private void guarda(String text) {
+            switch (text) {
+                case "Agregar":
+                    agregaExamen();
+                    break;
+                case "Modificar":
+                    modificaExamen();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
         }
 
         private void agregaExamen() {
@@ -497,23 +530,20 @@ public class Admin extends javax.swing.JFrame {
             verExamenJD.setVisible(false);
         }
 
-        private void handleModificarExamenes() {
-            //variables
-            int id = (int) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 0);
-            String titulo = (String) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 1);
-            boolean activo = (boolean) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 2);
-
-            //presentation
-            verExamenJD.setTitle("Modificar examen");
-
-            idAgregarExamenJTF.setText(id + "");
-            tituloAgregarExamenJTF.setText(titulo);
-            tituloAgregarExamenJTF.requestFocus();
-            activoAgregarExamenJCB.setSelected(activo);
-
-            verExamenJD.setLocationRelativeTo(Admin.this);
-            verExamenJD.setVisible(true);
-
+        private void modificaExamen() {
+            int id = Integer.parseInt(idAgregarExamenJTF.getText());
+            String titulo = tituloAgregarExamenJTF.getText();
+            if (titulo.length() == 0) {
+                JOptionPane.showMessageDialog(Admin.this, "Debe escribir un título para el examen", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (ExamenJDBC.modifica(id, titulo, activoAgregarExamenJCB.isSelected()) == 1) {
+                JOptionPane.showMessageDialog(Admin.this, "Examen modificado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(Admin.this, "Error modificando examen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            ExamenJDBC.cargaTabla(tablaExamenJT);
+            verExamenJD.setVisible(false);
         }
 
         private void handleEliminarExamenes() {

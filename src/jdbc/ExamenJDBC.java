@@ -39,4 +39,18 @@ public class ExamenJDBC {
         }
         return 0;
     }
+
+    public static int modifica(int id, String titulo, boolean activo) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement("UPDATE examen set titulo=?, activo=? WHERE id=?");) {
+
+            ps.setString(1, titulo);
+            ps.setBoolean(2, activo);
+            ps.setInt(3, id);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return 0;
+    }
 }
