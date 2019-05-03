@@ -399,7 +399,7 @@
                       <Component id="adminExamenesJB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="adminUsuariosJB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="278" max="32767" attributes="0"/>
+                      <EmptySpace pref="563" max="32767" attributes="0"/>
                       <Component id="goBackJB" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -417,7 +417,7 @@
                   <Component id="goBackJB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="panelJTP" pref="234" max="32767" attributes="0"/>
+              <Component id="panelJTP" pref="468" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>

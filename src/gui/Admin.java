@@ -331,7 +331,7 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(adminExamenesJB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(adminUsuariosJB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 563, Short.MAX_VALUE)
                         .addComponent(goBackJB, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -344,7 +344,7 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(adminUsuariosJB)
                     .addComponent(goBackJB))
                 .addGap(18, 18, 18)
-                .addComponent(panelJTP, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addComponent(panelJTP, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
