@@ -29,6 +29,7 @@ public class Admin extends javax.swing.JFrame {
     private void addListeners() {
         goBackJB.addActionListener(driver);
         adminExamenesJB.addActionListener(driver);
+        adminReactivosJB.addActionListener(driver);
         adminUsuariosJB.addActionListener(driver);
         //panel examenes
         agregarExamenesJB.addActionListener(driver);
@@ -74,6 +75,7 @@ public class Admin extends javax.swing.JFrame {
         adminUsuariosJB = new javax.swing.JButton();
         panelJTP = new javax.swing.JTabbedPane();
         goBackJB = new javax.swing.JButton();
+        adminReactivosJB = new javax.swing.JButton();
 
         tablaExamenJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -319,6 +321,9 @@ public class Admin extends javax.swing.JFrame {
         goBackJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         goBackJB.setText("Salir");
 
+        adminReactivosJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/reactivo.png"))); // NOI18N
+        adminReactivosJB.setText("Administrar reactivos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -331,7 +336,9 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(adminExamenesJB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(adminUsuariosJB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 563, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(adminReactivosJB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 378, Short.MAX_VALUE)
                         .addComponent(goBackJB, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -342,7 +349,8 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(adminExamenesJB)
                     .addComponent(adminUsuariosJB)
-                    .addComponent(goBackJB))
+                    .addComponent(goBackJB)
+                    .addComponent(adminReactivosJB))
                 .addGap(18, 18, 18)
                 .addComponent(panelJTP, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                 .addContainerGap())
@@ -390,6 +398,7 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox activoAgregarExamenJCB;
     private javax.swing.JButton adminExamenesJB;
+    private javax.swing.JButton adminReactivosJB;
     private javax.swing.JButton adminUsuariosJB;
     private javax.swing.JButton agregarExamenesJB;
     private javax.swing.JButton agregarUsuariosJB;
