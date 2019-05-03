@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         //Mostrar en título el texto del JMenuItem
-        WebOptionPane.showMessageDialog(null, "Cuestion 0.1",
+        WebOptionPane.showMessageDialog(this, "Cuestion 0.1",
                 ((JMenuItem) evt.getSource()).getText(),
                 WebOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
