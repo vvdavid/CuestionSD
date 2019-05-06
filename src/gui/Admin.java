@@ -250,6 +250,8 @@ public class Admin extends javax.swing.JFrame {
             JButton src = (JButton) ae.getSource();
             if (src == goBackJB) {
                 goBack();
+            } else if (src == adminReactivosJB) {
+                addToPanel(reactivosJP, src);
             } else if (src == adminExamenesJB) {
                 addToPanel(examenesJP, src);
             } else if (src == adminUsuariosJB) {
