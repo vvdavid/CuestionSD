@@ -1,6 +1,7 @@
 package gui;
 
 import com.alee.laf.WebLookAndFeel;
+import gui.adminPanels.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -16,12 +17,18 @@ import tools.GoBack;
 public class Admin extends javax.swing.JFrame {
 
     private Driver driver;
+    private ExamenJP examenesJP;
+    private UsuariosJP usuariosJP;
+    private ReactivosJP reactivosJP;
 
     /**
      * Creates new form Admin
      */
     public Admin() {
         initComponents();
+        this.examenesJP = new ExamenJP();
+        this.usuariosJP = new UsuariosJP();
+        this.reactivosJP = new ReactivosJP();
         this.driver = new Driver();
         addListeners();
     }
@@ -32,9 +39,9 @@ public class Admin extends javax.swing.JFrame {
         adminReactivosJB.addActionListener(driver);
         adminUsuariosJB.addActionListener(driver);
         //panel examenes
-        agregarExamenesJB.addActionListener(driver);
-        modificarExamenesJB.addActionListener(driver);
-        eliminarExamenesJB.addActionListener(driver);
+        examenesJP.agregarExamenesJB.addActionListener(driver);
+        examenesJP.modificarExamenesJB.addActionListener(driver);
+        examenesJP.eliminarExamenesJB.addActionListener(driver);
         guardarAgregarExamenJB.addActionListener(driver);
         cancelarAgregarExamenJB.addActionListener(driver);
         //panel administracion
@@ -49,34 +56,6 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        examenesJP = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaExamenJT = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        agregarExamenesJB = new javax.swing.JButton();
-        modificarExamenesJB = new javax.swing.JButton();
-        eliminarExamenesJB = new javax.swing.JButton();
-        usuariosJP = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaUsuariosJT = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        agregarUsuariosJB = new javax.swing.JButton();
-        modificarUsuariosJB = new javax.swing.JButton();
-        eliminarUsuariosJB1 = new javax.swing.JButton();
-        reactivosJP = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        multipleJL = new javax.swing.JLabel();
-        opcionJL = new javax.swing.JLabel();
-        abiertaJL = new javax.swing.JLabel();
-        completarJL = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        reactivosJL = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
         verExamenJD = new javax.swing.JDialog();
         activoAgregarExamenJCB = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
@@ -90,281 +69,6 @@ public class Admin extends javax.swing.JFrame {
         panelJTP = new javax.swing.JTabbedPane();
         goBackJB = new javax.swing.JButton();
         adminReactivosJB = new javax.swing.JButton();
-
-        tablaExamenJT.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Título", "Activo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaExamenJT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaExamenJT.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaExamenJT);
-        if (tablaExamenJT.getColumnModel().getColumnCount() > 0) {
-            tablaExamenJT.getColumnModel().getColumn(0).setMaxWidth(45);
-            tablaExamenJT.getColumnModel().getColumn(2).setMaxWidth(80);
-        }
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
-
-        agregarExamenesJB.setText("Agregar");
-
-        modificarExamenesJB.setText("Modificar");
-
-        eliminarExamenesJB.setText("Eliminar");
-        eliminarExamenesJB.setToolTipText("Solo es posible un examen si no tiene historial de algún usuario");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                    .addComponent(agregarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eliminarExamenesJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(agregarExamenesJB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modificarExamenesJB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eliminarExamenesJB)
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout examenesJPLayout = new javax.swing.GroupLayout(examenesJP);
-        examenesJP.setLayout(examenesJPLayout);
-        examenesJPLayout.setHorizontalGroup(
-            examenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(examenesJPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        examenesJPLayout.setVerticalGroup(
-            examenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, examenesJPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(examenesJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        tablaUsuariosJT.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nombre", "Hash"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaUsuariosJT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaUsuariosJT.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tablaUsuariosJT);
-        if (tablaUsuariosJT.getColumnModel().getColumnCount() > 0) {
-            tablaUsuariosJT.getColumnModel().getColumn(0).setMaxWidth(45);
-        }
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
-        jPanel2.setPreferredSize(new java.awt.Dimension(178, 237));
-
-        agregarUsuariosJB.setText("Agregar");
-
-        modificarUsuariosJB.setText("Modificar");
-
-        eliminarUsuariosJB1.setText("Eliminar");
-        eliminarUsuariosJB1.setToolTipText("Solo es posible un examen si no tiene historial de algún usuario");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                    .addComponent(agregarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eliminarUsuariosJB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(agregarUsuariosJB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modificarUsuariosJB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eliminarUsuariosJB1)
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout usuariosJPLayout = new javax.swing.GroupLayout(usuariosJP);
-        usuariosJP.setLayout(usuariosJPLayout);
-        usuariosJPLayout.setHorizontalGroup(
-            usuariosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usuariosJPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        usuariosJPLayout.setVerticalGroup(
-            usuariosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuariosJPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(usuariosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Examen"));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel1.setText("Múltiple respuesta:");
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("Opción múltiple:");
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setText("Abierta:");
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel6.setText("Completar:");
-
-        multipleJL.setText("999,999");
-
-        opcionJL.setText("999,999");
-
-        abiertaJL.setText("999,999");
-
-        completarJL.setText("999,999");
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel8.setText("Reactivos totales:");
-
-        reactivosJL.setText("999,999");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(reactivosJL)
-                    .addComponent(completarJL)
-                    .addComponent(abiertaJL)
-                    .addComponent(opcionJL)
-                    .addComponent(multipleJL))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(multipleJL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(opcionJL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(abiertaJL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(completarJL))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(reactivosJL))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel7.setText("Examen:");
-
-        javax.swing.GroupLayout reactivosJPLayout = new javax.swing.GroupLayout(reactivosJP);
-        reactivosJP.setLayout(reactivosJPLayout);
-        reactivosJPLayout.setHorizontalGroup(
-            reactivosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reactivosJPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, 0, 378, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        reactivosJPLayout.setVerticalGroup(
-            reactivosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reactivosJPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(reactivosJPLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(reactivosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         verExamenJD.setTitle("Examen");
         verExamenJD.setModal(true);
@@ -515,46 +219,18 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel abiertaJL;
     private javax.swing.JCheckBox activoAgregarExamenJCB;
     private javax.swing.JButton adminExamenesJB;
     private javax.swing.JButton adminReactivosJB;
     private javax.swing.JButton adminUsuariosJB;
-    private javax.swing.JButton agregarExamenesJB;
-    private javax.swing.JButton agregarUsuariosJB;
     private javax.swing.JButton cancelarAgregarExamenJB;
-    private javax.swing.JLabel completarJL;
-    private javax.swing.JButton eliminarExamenesJB;
-    private javax.swing.JButton eliminarUsuariosJB1;
-    private javax.swing.JPanel examenesJP;
     private javax.swing.JButton goBackJB;
     private javax.swing.JButton guardarAgregarExamenJB;
     private javax.swing.JTextField idAgregarExamenJTF;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton modificarExamenesJB;
-    private javax.swing.JButton modificarUsuariosJB;
-    private javax.swing.JLabel multipleJL;
-    private javax.swing.JLabel opcionJL;
     private javax.swing.JTabbedPane panelJTP;
-    private javax.swing.JLabel reactivosJL;
-    private javax.swing.JPanel reactivosJP;
-    private javax.swing.JTable tablaExamenJT;
-    private javax.swing.JTable tablaUsuariosJT;
     private javax.swing.JTextField tituloAgregarExamenJTF;
-    private javax.swing.JPanel usuariosJP;
     private javax.swing.JDialog verExamenJD;
     // End of variables declaration//GEN-END:variables
 
@@ -565,8 +241,8 @@ public class Admin extends javax.swing.JFrame {
         }
 
         private void cargaTablas() {
-            ExamenJDBC.cargaTabla(tablaExamenJT);
-            UsuarioJDBC.cargaTabla(tablaUsuariosJT);
+            ExamenJDBC.cargaTabla(examenesJP.tablaExamenJT);
+            UsuarioJDBC.cargaTabla(usuariosJP.tablaUsuariosJT);
         }
 
         @Override
@@ -583,14 +259,14 @@ public class Admin extends javax.swing.JFrame {
                 guarda(src.getText());
             } else if (src == cancelarAgregarExamenJB) {
                 verExamenJD.setVisible(false);
-            } else if (src == agregarExamenesJB) {
+            } else if (src == examenesJP.agregarExamenesJB) {
                 handleAgregarExamenes();
-            } else if (src == modificarExamenesJB) {
-                if (haySeleccion(tablaExamenJT)) {
+            } else if (src == examenesJP.modificarExamenesJB) {
+                if (haySeleccion(examenesJP.tablaExamenJT)) {
                     handleModificarExamenes();
                 }
-            } else if (src == eliminarExamenesJB) {
-                if (haySeleccion(tablaExamenJT)) {
+            } else if (src == examenesJP.eliminarExamenesJB) {
+                if (haySeleccion(examenesJP.tablaExamenJT)) {
                     handleEliminarExamenes();
                 }
             } else {
@@ -629,9 +305,10 @@ public class Admin extends javax.swing.JFrame {
 
         private void handleModificarExamenes() {
             //variables
-            int id = (int) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 0);
-            String titulo = (String) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 1);
-            boolean activo = (boolean) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 2);
+            JTable tabla = examenesJP.tablaExamenJT;
+            int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+            String titulo = (String) tabla.getValueAt(tabla.getSelectedRow(), 1);
+            boolean activo = (boolean) tabla.getValueAt(tabla.getSelectedRow(), 2);
 
             //presentation
             verExamenJD.setTitle("Modificar examen");
@@ -668,7 +345,7 @@ public class Admin extends javax.swing.JFrame {
             if (ExamenJDBC.agrega(titulo, activoAgregarExamenJCB.isSelected()) != 1) {
                 JOptionPane.showMessageDialog(Admin.this, "Error agregando examen", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            ExamenJDBC.cargaTabla(tablaExamenJT);
+            ExamenJDBC.cargaTabla(examenesJP.tablaExamenJT);
             verExamenJD.setVisible(false);
         }
 
@@ -684,14 +361,15 @@ public class Admin extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(Admin.this, "Error modificando examen", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            ExamenJDBC.cargaTabla(tablaExamenJT);
+            ExamenJDBC.cargaTabla(examenesJP.tablaExamenJT);
             verExamenJD.setVisible(false);
         }
 
         private void handleEliminarExamenes() {
+            JTable tabla = examenesJP.tablaExamenJT;
             DBTools.elimina("examen", "reactivo", "idExamen", "Los reactivos asociados con este examen también se eliminarán, ¿continuar?",
-                    (int) tablaExamenJT.getValueAt(tablaExamenJT.getSelectedRow(), 0));
-            ExamenJDBC.cargaTabla(tablaExamenJT);
+                    (int) tabla.getValueAt(tabla.getSelectedRow(), 0));
+            ExamenJDBC.cargaTabla(tabla);
         }
 
     }
