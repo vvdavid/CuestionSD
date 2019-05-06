@@ -63,6 +63,20 @@ public class Admin extends javax.swing.JFrame {
         agregarUsuariosJB = new javax.swing.JButton();
         modificarUsuariosJB = new javax.swing.JButton();
         eliminarUsuariosJB1 = new javax.swing.JButton();
+        reactivosJP = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        multipleJL = new javax.swing.JLabel();
+        opcionJL = new javax.swing.JLabel();
+        abiertaJL = new javax.swing.JLabel();
+        completarJL = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        reactivosJL = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         verExamenJD = new javax.swing.JDialog();
         activoAgregarExamenJCB = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
@@ -247,6 +261,111 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Examen"));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setText("Múltiple respuesta:");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setText("Opción múltiple:");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setText("Abierta:");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setText("Completar:");
+
+        multipleJL.setText("999,999");
+
+        opcionJL.setText("999,999");
+
+        abiertaJL.setText("999,999");
+
+        completarJL.setText("999,999");
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel8.setText("Reactivos totales:");
+
+        reactivosJL.setText("999,999");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reactivosJL)
+                    .addComponent(completarJL)
+                    .addComponent(abiertaJL)
+                    .addComponent(opcionJL)
+                    .addComponent(multipleJL))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(multipleJL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(opcionJL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(abiertaJL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(completarJL))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(reactivosJL))
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel7.setText("Examen:");
+
+        javax.swing.GroupLayout reactivosJPLayout = new javax.swing.GroupLayout(reactivosJP);
+        reactivosJP.setLayout(reactivosJPLayout);
+        reactivosJPLayout.setHorizontalGroup(
+            reactivosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reactivosJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, 0, 378, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        reactivosJPLayout.setVerticalGroup(
+            reactivosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reactivosJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(reactivosJPLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(reactivosJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         verExamenJD.setTitle("Examen");
         verExamenJD.setModal(true);
         verExamenJD.setResizable(false);
@@ -396,6 +515,7 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel abiertaJL;
     private javax.swing.JCheckBox activoAgregarExamenJCB;
     private javax.swing.JButton adminExamenesJB;
     private javax.swing.JButton adminReactivosJB;
@@ -403,21 +523,34 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton agregarExamenesJB;
     private javax.swing.JButton agregarUsuariosJB;
     private javax.swing.JButton cancelarAgregarExamenJB;
+    private javax.swing.JLabel completarJL;
     private javax.swing.JButton eliminarExamenesJB;
     private javax.swing.JButton eliminarUsuariosJB1;
     private javax.swing.JPanel examenesJP;
     private javax.swing.JButton goBackJB;
     private javax.swing.JButton guardarAgregarExamenJB;
     private javax.swing.JTextField idAgregarExamenJTF;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton modificarExamenesJB;
     private javax.swing.JButton modificarUsuariosJB;
+    private javax.swing.JLabel multipleJL;
+    private javax.swing.JLabel opcionJL;
     private javax.swing.JTabbedPane panelJTP;
+    private javax.swing.JLabel reactivosJL;
+    private javax.swing.JPanel reactivosJP;
     private javax.swing.JTable tablaExamenJT;
     private javax.swing.JTable tablaUsuariosJT;
     private javax.swing.JTextField tituloAgregarExamenJTF;
