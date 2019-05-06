@@ -3,11 +3,27 @@ package jdbc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import pojos.Examen;
 import tools.DBTools;
 
 public class ExamenJDBC {
+
+    public static void cargaCombo(JComboBox<Examen> combo) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "SELECT * FROM examen");
+                ResultSet rs = ps.executeQuery();) {
+            combo.removeAllItems();
+            while (rs.next()) {
+                combo.addItem(new Examen(rs.getInt(1), rs.getString(2), rs.getBoolean(3)));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
 
     public static void cargaTabla(JTable tablaExamenJT) {
         try (
