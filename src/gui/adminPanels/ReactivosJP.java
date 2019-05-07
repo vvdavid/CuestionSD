@@ -1,6 +1,9 @@
 package gui.adminPanels;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import jdbc.ExamenJDBC;
+import jdbc.ReactivoJDBC;
 import pojos.Examen;
 
 public class ReactivosJP extends javax.swing.JPanel {
@@ -13,6 +16,11 @@ public class ReactivosJP extends javax.swing.JPanel {
     public ReactivosJP() {
         initComponents();
         this.driver = new Driver();
+        addListeners();
+    }
+
+    private void addListeners() {
+        examenesJCB.addItemListener(driver);
     }
 
     /**
@@ -199,15 +207,17 @@ public class ReactivosJP extends javax.swing.JPanel {
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
-    private class Driver {
+    private class Driver implements ItemListener {
 
         public Driver() {
-            cargaExamenes();
-//            cargaEstadisticas();
+            //cargar datos
+            ExamenJDBC.cargaCombo(examenesJCB);
+            ReactivoJDBC.cargaTablaTipoCompleto(tabla, ((Examen) examenesJCB.getSelectedItem()).getId());
         }
 
-        private void cargaExamenes() {
-            ExamenJDBC.cargaCombo(examenesJCB);
+        @Override
+        public void itemStateChanged(ItemEvent ie) {
+            ReactivoJDBC.cargaTablaTipoCompleto(tabla, ((Examen) examenesJCB.getSelectedItem()).getId());
         }
 
     }
