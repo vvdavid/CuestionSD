@@ -6,7 +6,7 @@ import jdbc.ExamenJDBC;
 import jdbc.ReactivoJDBC;
 import pojos.Examen;
 
-public class ReactivosJP extends javax.swing.JPanel {
+public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
     private Driver driver;
 
@@ -21,6 +21,11 @@ public class ReactivosJP extends javax.swing.JPanel {
 
     private void addListeners() {
         examenesJCB.addItemListener(driver);
+    }
+
+    @Override
+    public void updateData() {
+        driver.updateData();
     }
 
     /**
@@ -207,17 +212,19 @@ public class ReactivosJP extends javax.swing.JPanel {
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
-    private class Driver implements ItemListener {
-
-        public Driver() {
-            //cargar datos
-            ExamenJDBC.cargaCombo(examenesJCB);
-            ReactivoJDBC.cargaTablaTipoCompleto(tabla, ((Examen) examenesJCB.getSelectedItem()).getId());
-        }
+    private class Driver implements ItemListener, Updateable {
 
         @Override
         public void itemStateChanged(ItemEvent ie) {
             ReactivoJDBC.cargaTablaTipoCompleto(tabla, ((Examen) examenesJCB.getSelectedItem()).getId());
+        }
+
+        @Override
+        public void updateData() {
+            examenesJCB.removeItemListener(this);
+            ExamenJDBC.cargaCombo(examenesJCB);
+            ReactivoJDBC.cargaTablaTipoCompleto(tabla, ((Examen) examenesJCB.getSelectedItem()).getId());
+            examenesJCB.addItemListener(this);
         }
 
     }

@@ -1,6 +1,8 @@
 package gui.adminPanels;
 
-public class UsuariosJP extends javax.swing.JPanel {
+import jdbc.UsuarioJDBC;
+
+public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
     /**
      * Creates new form UsuariosJP
@@ -120,4 +122,9 @@ public class UsuariosJP extends javax.swing.JPanel {
     public javax.swing.JButton modificarUsuariosJB;
     public javax.swing.JTable tablaUsuariosJT;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateData() {
+        UsuarioJDBC.cargaTabla(tablaUsuariosJT);
+    }
 }

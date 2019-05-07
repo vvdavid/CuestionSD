@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import jdbc.ExamenJDBC;
 import jdbc.UsuarioJDBC;
 import tools.DBTools;
@@ -34,6 +36,9 @@ public class Admin extends javax.swing.JFrame {
     }
 
     private void addListeners() {
+        //jtabbedpane
+        panelJTP.addChangeListener(driver);
+        //jframe
         goBackJB.addActionListener(driver);
         adminExamenesJB.addActionListener(driver);
         adminReactivosJB.addActionListener(driver);
@@ -234,16 +239,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JDialog verExamenJD;
     // End of variables declaration//GEN-END:variables
 
-    private class Driver implements ActionListener, GoBack {
-
-        private Driver() {
-            cargaTablas();
-        }
-
-        private void cargaTablas() {
-            ExamenJDBC.cargaTabla(examenesJP.tablaExamenJT);
-            UsuarioJDBC.cargaTabla(usuariosJP.tablaUsuariosJT);
-        }
+    private class Driver implements ActionListener, GoBack, ChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -273,6 +269,14 @@ public class Admin extends javax.swing.JFrame {
                 }
             } else {
                 throw new UnsupportedOperationException();
+            }
+        }
+
+        @Override
+        public void stateChanged(ChangeEvent ce) {
+            Updateable selectedJPanel = (Updateable) panelJTP.getSelectedComponent();
+            if (selectedJPanel != null) {
+                selectedJPanel.updateData();
             }
         }
 
