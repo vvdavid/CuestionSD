@@ -222,10 +222,10 @@ public class ExamenJP extends javax.swing.JPanel implements Updateable {
 
     @Override
     public void updateData() {
-        ExamenJDBC.cargaTabla(tablaExamenJT);
+        driver.updateData();
     }
 
-    private class Driver implements ActionListener {
+    private class Driver implements ActionListener, Updateable {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -247,6 +247,10 @@ public class ExamenJP extends javax.swing.JPanel implements Updateable {
             } else {
                 throw new UnsupportedOperationException();
             }
+        }
+
+        public void updateData() {
+            ExamenJDBC.cargaTabla(tablaExamenJT);
         }
 
         private boolean haySeleccion(JTable tablaExamenJT) {
