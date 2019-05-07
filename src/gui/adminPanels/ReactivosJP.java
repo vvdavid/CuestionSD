@@ -140,6 +140,11 @@ public class ReactivosJP extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tabla);
+        if (tabla.getColumnModel().getColumnCount() > 0) {
+            tabla.getColumnModel().getColumn(0).setMaxWidth(80);
+            tabla.getColumnModel().getColumn(2).setPreferredWidth(260);
+            tabla.getColumnModel().getColumn(2).setMaxWidth(260);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
