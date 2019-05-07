@@ -1,14 +1,34 @@
 package gui.adminPanels;
 
+import gui.Admin;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import jdbc.ExamenJDBC;
+import tools.DBTools;
 
 public class ExamenJP extends javax.swing.JPanel implements Updateable {
+
+    private Driver driver;
 
     /**
      * Creates new form ExamenJP
      */
     public ExamenJP() {
         initComponents();
+        driver = new Driver();
+        addListeners();
+    }
+
+    private void addListeners() {
+        //panel examenes
+        agregarExamenesJB.addActionListener(driver);
+        modificarExamenesJB.addActionListener(driver);
+        eliminarExamenesJB.addActionListener(driver);
+        guardarAgregarExamenJB.addActionListener(driver);
+        cancelarAgregarExamenJB.addActionListener(driver);
     }
 
     /**
@@ -20,12 +40,82 @@ public class ExamenJP extends javax.swing.JPanel implements Updateable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        verExamenJD = new javax.swing.JDialog();
+        activoAgregarExamenJCB = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
+        idAgregarExamenJTF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        tituloAgregarExamenJTF = new javax.swing.JTextField();
+        cancelarAgregarExamenJB = new javax.swing.JButton();
+        guardarAgregarExamenJB = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaExamenJT = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         agregarExamenesJB = new javax.swing.JButton();
         modificarExamenesJB = new javax.swing.JButton();
         eliminarExamenesJB = new javax.swing.JButton();
+
+        verExamenJD.setTitle("Examen");
+        verExamenJD.setModal(true);
+        verExamenJD.setResizable(false);
+
+        activoAgregarExamenJCB.setSelected(true);
+        activoAgregarExamenJCB.setText("Activo");
+
+        jLabel3.setText("ID");
+
+        idAgregarExamenJTF.setEnabled(false);
+
+        jLabel4.setText("Título*");
+
+        cancelarAgregarExamenJB.setText("Cancelar");
+
+        guardarAgregarExamenJB.setText("Guardar");
+
+        javax.swing.GroupLayout verExamenJDLayout = new javax.swing.GroupLayout(verExamenJD.getContentPane());
+        verExamenJD.getContentPane().setLayout(verExamenJDLayout);
+        verExamenJDLayout.setHorizontalGroup(
+            verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verExamenJDLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(verExamenJDLayout.createSequentialGroup()
+                        .addGroup(verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloAgregarExamenJTF)
+                            .addComponent(idAgregarExamenJTF)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, verExamenJDLayout.createSequentialGroup()
+                        .addGap(0, 162, Short.MAX_VALUE)
+                        .addComponent(cancelarAgregarExamenJB)
+                        .addGap(18, 18, 18)
+                        .addComponent(guardarAgregarExamenJB))
+                    .addComponent(activoAgregarExamenJCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
+        );
+        verExamenJDLayout.setVerticalGroup(
+            verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verExamenJDLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(idAgregarExamenJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tituloAgregarExamenJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(activoAgregarExamenJCB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(verExamenJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarAgregarExamenJB)
+                    .addComponent(cancelarAgregarExamenJB))
+                .addGap(15, 15, 15))
+        );
+
+        verExamenJD.pack();
 
         tablaExamenJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,16 +205,137 @@ public class ExamenJP extends javax.swing.JPanel implements Updateable {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox activoAgregarExamenJCB;
     public javax.swing.JButton agregarExamenesJB;
+    private javax.swing.JButton cancelarAgregarExamenJB;
     public javax.swing.JButton eliminarExamenesJB;
+    private javax.swing.JButton guardarAgregarExamenJB;
+    private javax.swing.JTextField idAgregarExamenJTF;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JButton modificarExamenesJB;
     public javax.swing.JTable tablaExamenJT;
+    private javax.swing.JTextField tituloAgregarExamenJTF;
+    private javax.swing.JDialog verExamenJD;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void updateData() {
         ExamenJDBC.cargaTabla(tablaExamenJT);
+    }
+
+    private class Driver implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            JButton src = (JButton) ae.getSource();
+            if (src == guardarAgregarExamenJB) {
+                guarda(src.getText());
+            } else if (src == cancelarAgregarExamenJB) {
+                verExamenJD.setVisible(false);
+            } else if (src == agregarExamenesJB) {
+                handleAgregarExamenes();
+            } else if (src == modificarExamenesJB) {
+                if (haySeleccion(tablaExamenJT)) {
+                    handleModificarExamenes();
+                }
+            } else if (src == eliminarExamenesJB) {
+                if (haySeleccion(tablaExamenJT)) {
+                    handleEliminarExamenes();
+                }
+            } else {
+                throw new UnsupportedOperationException();
+            }
+        }
+
+        private boolean haySeleccion(JTable tablaExamenJT) {
+            return tablaExamenJT.getSelectedRow() != -1;
+        }
+
+        private void handleAgregarExamenes() {
+            //presentation
+            verExamenJD.setTitle("Agregar examen");
+
+            guardarAgregarExamenJB.setText("Agregar");
+            idAgregarExamenJTF.setText("");
+            tituloAgregarExamenJTF.setText("");
+            tituloAgregarExamenJTF.requestFocus();
+            activoAgregarExamenJCB.setSelected(false);
+
+            verExamenJD.setLocationRelativeTo(ExamenJP.this);
+            verExamenJD.setVisible(true);
+        }
+
+        private void handleModificarExamenes() {
+            //variables
+            JTable tabla = tablaExamenJT;
+            int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+            String titulo = (String) tabla.getValueAt(tabla.getSelectedRow(), 1);
+            boolean activo = (boolean) tabla.getValueAt(tabla.getSelectedRow(), 2);
+
+            //presentation
+            verExamenJD.setTitle("Modificar examen");
+
+            guardarAgregarExamenJB.setText("Modificar");
+            idAgregarExamenJTF.setText(id + "");
+            tituloAgregarExamenJTF.setText(titulo);
+            tituloAgregarExamenJTF.requestFocus();
+            activoAgregarExamenJCB.setSelected(activo);
+
+            verExamenJD.setLocationRelativeTo(ExamenJP.this);
+            verExamenJD.setVisible(true);
+        }
+
+        private void guarda(String text) {
+            switch (text) {
+                case "Agregar":
+                    agregaExamen();
+                    break;
+                case "Modificar":
+                    modificaExamen();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+
+        private void agregaExamen() {
+            String titulo = tituloAgregarExamenJTF.getText();
+            if (titulo.length() == 0) {
+                JOptionPane.showMessageDialog(ExamenJP.this, "Debe escribir un título para el examen", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (ExamenJDBC.agrega(titulo, activoAgregarExamenJCB.isSelected()) != 1) {
+                JOptionPane.showMessageDialog(ExamenJP.this, "Error agregando examen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            ExamenJDBC.cargaTabla(tablaExamenJT);
+            verExamenJD.setVisible(false);
+        }
+
+        private void modificaExamen() {
+            int id = Integer.parseInt(idAgregarExamenJTF.getText());
+            String titulo = tituloAgregarExamenJTF.getText();
+            if (titulo.length() == 0) {
+                JOptionPane.showMessageDialog(ExamenJP.this, "Debe escribir un título para el examen", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (ExamenJDBC.modifica(id, titulo, activoAgregarExamenJCB.isSelected()) == 1) {
+                JOptionPane.showMessageDialog(ExamenJP.this, "Examen modificado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(ExamenJP.this, "Error modificando examen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            ExamenJDBC.cargaTabla(tablaExamenJT);
+            verExamenJD.setVisible(false);
+        }
+
+        private void handleEliminarExamenes() {
+            JTable tabla = tablaExamenJT;
+            DBTools.elimina("examen", "reactivo", "idExamen", "Los reactivos asociados con este examen también se eliminarán, ¿continuar?",
+                    (int) tabla.getValueAt(tabla.getSelectedRow(), 0));
+            ExamenJDBC.cargaTabla(tabla);
+        }
+
     }
 }
