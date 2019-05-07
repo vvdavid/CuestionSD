@@ -4,11 +4,14 @@ import jdbc.UsuarioJDBC;
 
 public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
+    private Driver driver;
+
     /**
      * Creates new form UsuariosJP
      */
     public UsuariosJP() {
         initComponents();
+        driver = new Driver();
     }
 
     /**
@@ -125,6 +128,15 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
     @Override
     public void updateData() {
-        UsuarioJDBC.cargaTabla(tablaUsuariosJT);
+        driver.updateData();
+    }
+
+    private class Driver implements Updateable {
+
+        @Override
+        public void updateData() {
+            UsuarioJDBC.cargaTabla(tablaUsuariosJT);
+        }
+
     }
 }
