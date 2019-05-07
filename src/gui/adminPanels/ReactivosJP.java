@@ -152,6 +152,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 return canEdit [columnIndex];
             }
         });
+        tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
         if (tabla.getColumnModel().getColumnCount() > 0) {
             tabla.getColumnModel().getColumn(0).setMaxWidth(80);
