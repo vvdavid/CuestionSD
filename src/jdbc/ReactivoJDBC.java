@@ -3,6 +3,7 @@ package jdbc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import pojos.Tipo;
@@ -29,6 +30,31 @@ public class ReactivoJDBC {
             }
         } catch (SQLException ex) {
             System.err.println(ex);
+        }
+    }
+
+    public static void cargaContadores(int idExamen, JLabel totalJL, JLabel... tipoLabels) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "SELECT idTipo, count(*)\n"
+                        + "FROM Reactivo\n"
+                        + "WHERE idExamen=" + idExamen + "\n"
+                        + "GROUP BY idTipo");
+                ResultSet rs = ps.executeQuery();) {
+            for (JLabel label : tipoLabels) {
+                label.setText("0");
+            }
+
+            int total = 0;
+            while (rs.next()) {
+                int actualCount = rs.getInt(2);
+                total += actualCount;
+                tipoLabels[rs.getInt(1) - 1].setText("" + actualCount);
+            }
+            totalJL.setText("" + total);
+
+        } catch (SQLException e) {
+            System.err.println(e);
         }
     }
 }
