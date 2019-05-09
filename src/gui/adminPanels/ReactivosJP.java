@@ -37,6 +37,44 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        agrega = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        agregaTipoJCB = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        respuestasJP = new javax.swing.JPanel();
+        multipleJP = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        multipleJPCorrectas = new javax.swing.JList<>();
+        multipleJPCorrectasAgregar = new javax.swing.JButton();
+        multipleJPCorrectasEliminar = new javax.swing.JButton();
+        multipleJPIncorrectasEliminar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        JScrollPane1 = new javax.swing.JScrollPane();
+        multipleJPIncorrectas = new javax.swing.JList<>();
+        multipleJPIncorrectasAgregar = new javax.swing.JButton();
+        opcionJP = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        opcionJPIncorrectasEliminar = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        opcionJPIncorrectas = new javax.swing.JList<>();
+        opcionJPIncorrectasAgregar = new javax.swing.JButton();
+        opcionJPCorrecta = new javax.swing.JTextField();
+        completarJP = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        completarJPCorrectas = new javax.swing.JList<>();
+        completarJPModificar = new javax.swing.JButton();
+        abiertaJP = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        abiertaJPCorrecta = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,6 +94,271 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+
+        agrega.setResizable(false);
+
+        jLabel3.setText("Tipo:");
+
+        agregaTipoJCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton5.setText("Cancelar");
+
+        jButton6.setText("Guardar");
+
+        jLabel4.setText("ID:");
+
+        jTextField1.setEditable(false);
+
+        jLabel9.setText("Descripción:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        respuestasJP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        respuestasJP.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout agregaLayout = new javax.swing.GroupLayout(agrega.getContentPane());
+        agrega.getContentPane().setLayout(agregaLayout);
+        agregaLayout.setHorizontalGroup(
+            agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregaLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(agregaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, agregaLayout.createSequentialGroup()
+                        .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(62, 62, 62)
+                        .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(agregaTipoJCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, agregaLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2)))
+                .addGap(12, 12, 12))
+        );
+        agregaLayout.setVerticalGroup(
+            agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregaLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(agregaTipoJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton5))
+                .addContainerGap())
+        );
+
+        jLabel10.setText("Respuestas correctas");
+
+        multipleJPCorrectas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(multipleJPCorrectas);
+
+        multipleJPCorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+
+        multipleJPCorrectasEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/remove.png"))); // NOI18N
+
+        multipleJPIncorrectasEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/remove.png"))); // NOI18N
+
+        jLabel11.setText("Respuestas incorrectas");
+
+        multipleJPIncorrectas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        JScrollPane1.setViewportView(multipleJPIncorrectas);
+
+        multipleJPIncorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+
+        javax.swing.GroupLayout multipleJPLayout = new javax.swing.GroupLayout(multipleJP);
+        multipleJP.setLayout(multipleJPLayout);
+        multipleJPLayout.setHorizontalGroup(
+            multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(multipleJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(multipleJPCorrectasAgregar)
+                    .addComponent(multipleJPCorrectasEliminar)
+                    .addComponent(multipleJPIncorrectasEliminar)
+                    .addComponent(multipleJPIncorrectasAgregar))
+                .addContainerGap())
+        );
+        multipleJPLayout.setVerticalGroup(
+            multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(multipleJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(multipleJPLayout.createSequentialGroup()
+                        .addComponent(multipleJPCorrectasAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(multipleJPCorrectasEliminar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(multipleJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JScrollPane1)
+                    .addGroup(multipleJPLayout.createSequentialGroup()
+                        .addComponent(multipleJPIncorrectasAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(multipleJPIncorrectasEliminar)))
+                .addGap(17, 17, 17))
+        );
+
+        jLabel12.setText("Respuesta correcta");
+
+        opcionJPIncorrectasEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/remove.png"))); // NOI18N
+
+        jLabel13.setText("Respuestas incorrectas");
+
+        opcionJPIncorrectas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(opcionJPIncorrectas);
+
+        opcionJPIncorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+
+        javax.swing.GroupLayout opcionJPLayout = new javax.swing.GroupLayout(opcionJP);
+        opcionJP.setLayout(opcionJPLayout);
+        opcionJPLayout.setHorizontalGroup(
+            opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(opcionJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opcionJPCorrecta)
+                    .addGroup(opcionJPLayout.createSequentialGroup()
+                        .addGroup(opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(opcionJPIncorrectasEliminar)
+                            .addComponent(opcionJPIncorrectasAgregar))))
+                .addContainerGap())
+        );
+        opcionJPLayout.setVerticalGroup(
+            opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(opcionJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(opcionJPCorrecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(opcionJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6)
+                    .addGroup(opcionJPLayout.createSequentialGroup()
+                        .addComponent(opcionJPIncorrectasAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(opcionJPIncorrectasEliminar)))
+                .addGap(14, 14, 14))
+        );
+
+        jLabel21.setText("Respuestas correctas");
+
+        completarJPCorrectas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane10.setViewportView(completarJPCorrectas);
+
+        completarJPModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/modify.png"))); // NOI18N
+        completarJPModificar.setText("Modificar respuesta");
+
+        javax.swing.GroupLayout completarJPLayout = new javax.swing.GroupLayout(completarJP);
+        completarJP.setLayout(completarJPLayout);
+        completarJPLayout.setHorizontalGroup(
+            completarJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(completarJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(completarJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addGroup(completarJPLayout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(completarJPModificar)))
+                .addContainerGap())
+        );
+        completarJPLayout.setVerticalGroup(
+            completarJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(completarJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(completarJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(completarJPLayout.createSequentialGroup()
+                        .addComponent(jScrollPane10)
+                        .addGap(14, 14, 14))
+                    .addGroup(completarJPLayout.createSequentialGroup()
+                        .addComponent(completarJPModificar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        jLabel25.setText("Respuesta correcta");
+
+        javax.swing.GroupLayout abiertaJPLayout = new javax.swing.GroupLayout(abiertaJP);
+        abiertaJP.setLayout(abiertaJPLayout);
+        abiertaJPLayout.setHorizontalGroup(
+            abiertaJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(abiertaJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(abiertaJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(abiertaJPLayout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(abiertaJPCorrecta, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        abiertaJPLayout.setVerticalGroup(
+            abiertaJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(abiertaJPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(abiertaJPCorrecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Examen"));
 
@@ -214,35 +517,80 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JScrollPane1;
     public javax.swing.JLabel abiertaJL;
+    private javax.swing.JPanel abiertaJP;
+    private javax.swing.JTextField abiertaJPCorrecta;
+    private javax.swing.JDialog agrega;
+    private javax.swing.JComboBox<String> agregaTipoJCB;
     public javax.swing.JLabel completarJL;
+    private javax.swing.JPanel completarJP;
+    private javax.swing.JList<String> completarJPCorrectas;
+    private javax.swing.JButton completarJPModificar;
     public javax.swing.JComboBox<Examen> examenesJCB;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel multipleJL;
+    private javax.swing.JPanel multipleJP;
+    private javax.swing.JList<String> multipleJPCorrectas;
+    private javax.swing.JButton multipleJPCorrectasAgregar;
+    private javax.swing.JButton multipleJPCorrectasEliminar;
+    private javax.swing.JList<String> multipleJPIncorrectas;
+    private javax.swing.JButton multipleJPIncorrectasAgregar;
+    private javax.swing.JButton multipleJPIncorrectasEliminar;
     public javax.swing.JLabel opcionJL;
+    private javax.swing.JPanel opcionJP;
+    private javax.swing.JTextField opcionJPCorrecta;
+    private javax.swing.JList<String> opcionJPIncorrectas;
+    private javax.swing.JButton opcionJPIncorrectasAgregar;
+    private javax.swing.JButton opcionJPIncorrectasEliminar;
+    private javax.swing.JPanel respuestasJP;
     private javax.swing.JTable tabla;
     public javax.swing.JLabel totalJL;
     // End of variables declaration//GEN-END:variables
 
     private class Driver implements ItemListener, Updateable {
+
+        public Driver() {
+            respuestasJP.add(multipleJP, 0);
+            respuestasJP.add(opcionJP, 1);
+            respuestasJP.add(abiertaJP, 2);
+            respuestasJP.add(completarJP, 3);
+        }
 
         @Override
         public void itemStateChanged(ItemEvent ie) {
