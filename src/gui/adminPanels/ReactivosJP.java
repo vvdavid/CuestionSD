@@ -52,7 +52,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        agrega = new javax.swing.JDialog();
+        verReactivoJD = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         agregaTipoJCB = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
@@ -83,8 +83,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
-        agrega.setModal(true);
-        agrega.setResizable(false);
+        verReactivoJD.setModal(true);
+        verReactivoJD.setResizable(false);
 
         jLabel3.setText("Tipo:");
 
@@ -106,52 +106,52 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         respuestasJP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         respuestasJP.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout agregaLayout = new javax.swing.GroupLayout(agrega.getContentPane());
-        agrega.getContentPane().setLayout(agregaLayout);
-        agregaLayout.setHorizontalGroup(
-            agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregaLayout.createSequentialGroup()
+        javax.swing.GroupLayout verReactivoJDLayout = new javax.swing.GroupLayout(verReactivoJD.getContentPane());
+        verReactivoJD.getContentPane().setLayout(verReactivoJDLayout);
+        verReactivoJDLayout.setHorizontalGroup(
+            verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, verReactivoJDLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(agregaLayout.createSequentialGroup()
+                    .addGroup(verReactivoJDLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, agregaLayout.createSequentialGroup()
-                        .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, verReactivoJDLayout.createSequentialGroup()
+                        .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(62, 62, 62)
-                        .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(agregaTipoJCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, agregaLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, verReactivoJDLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2)))
                 .addGap(12, 12, 12))
         );
-        agregaLayout.setVerticalGroup(
-            agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregaLayout.createSequentialGroup()
+        verReactivoJDLayout.setVerticalGroup(
+            verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, verReactivoJDLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(agregaTipoJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(agregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
                 .addContainerGap())
@@ -322,7 +322,6 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel abiertaJL;
-    private javax.swing.JDialog agrega;
     private javax.swing.JComboBox<Tipo> agregaTipoJCB;
     private javax.swing.JButton agregarJB;
     public javax.swing.JLabel completarJL;
@@ -350,6 +349,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private javax.swing.JPanel respuestasJP;
     private javax.swing.JTable tabla;
     public javax.swing.JLabel totalJL;
+    private javax.swing.JDialog verReactivoJD;
     private javax.swing.JButton verRespuestasJB;
     // End of variables declaration//GEN-END:variables
 
@@ -413,14 +413,14 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         }
 
         private void abreAgregaJD() {
-            agrega.setTitle("Agregar reactivo");
+            verReactivoJD.setTitle("Agregar reactivo");
             TipoJDBC.cargaCombo(agregaTipoJCB);
             seleccionaCardTipo();
-            agrega.pack();
-            agrega.setLocationRelativeTo(null);
+            verReactivoJD.pack();
+            verReactivoJD.setLocationRelativeTo(null);
             seleccionaCardTipo();
             
-            agrega.setVisible(true);
+            verReactivoJD.setVisible(true);
         }
 
         private void seleccionaCardTipo() {
