@@ -31,6 +31,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private void addListeners() {
         examenesJCB.addItemListener(driver);
         //admin reactivos
+        
         agregaTipoJCB.addItemListener(driver);
         agregarJB.addActionListener(driver);
         modificarJB.addActionListener(driver);
@@ -61,7 +62,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         jTextField1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descripcionJTA = new javax.swing.JTextArea();
         respuestasJP = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -98,11 +99,11 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
         jLabel9.setText("Descripción:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(jTextArea1);
+        descripcionJTA.setColumns(20);
+        descripcionJTA.setLineWrap(true);
+        descripcionJTA.setRows(5);
+        descripcionJTA.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(descripcionJTA);
 
         respuestasJP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         respuestasJP.setLayout(new java.awt.CardLayout());
@@ -331,6 +332,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private javax.swing.JComboBox<Tipo> agregaTipoJCB;
     private javax.swing.JButton agregarJB;
     public javax.swing.JLabel completarJL;
+    private javax.swing.JTextArea descripcionJTA;
     private javax.swing.JButton eliminarJB;
     public javax.swing.JComboBox<Examen> examenesJCB;
     private javax.swing.JButton jButton5;
@@ -347,7 +349,6 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton modificarJB;
     public javax.swing.JLabel multipleJL;
