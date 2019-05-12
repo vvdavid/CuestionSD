@@ -101,6 +101,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextArea1);
 
         respuestasJP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -380,7 +381,6 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 //                ver();
             } else if (src == eliminarJB) {
 //                elimina();
-                System.out.println("elimina");
             } else {
                 throw new UnsupportedOperationException();
             }
