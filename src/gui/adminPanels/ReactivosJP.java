@@ -429,7 +429,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
             seleccionaCardTipo();
             verReactivoJD.pack();
-            verReactivoJD.setLocationRelativeTo(null);
+            verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
 
             verReactivoJD.setVisible(true);
         }
