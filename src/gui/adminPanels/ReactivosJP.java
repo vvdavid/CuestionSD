@@ -388,14 +388,17 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
         @Override
         public void itemStateChanged(ItemEvent ie) {
-            JComboBox combo = (JComboBox) ie.getSource();
-            if (combo == agregaTipoJCB) {
-                seleccionaCardTipo();
-            } else if (combo == examenesJCB) {
-                cargaTablaYContadores();
-            } else {
-                throw new UnsupportedOperationException();
+            if (ie.getStateChange() == ItemEvent.SELECTED) {
+                JComboBox combo = (JComboBox) ie.getSource();
+                if (combo == agregaTipoJCB) {
+                    seleccionaCardTipo();
+                } else if (combo == examenesJCB) {
+                    cargaTablaYContadores();
+                } else {
+                    throw new UnsupportedOperationException();
+                }
             }
+
         }
 
         @Override
@@ -414,12 +417,15 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
         private void abreAgregaJD() {
             verReactivoJD.setTitle("Agregar reactivo");
+
+            agregaTipoJCB.removeItemListener(this);
             TipoJDBC.cargaCombo(agregaTipoJCB);
+            agregaTipoJCB.addItemListener(this);
+
             seleccionaCardTipo();
             verReactivoJD.pack();
             verReactivoJD.setLocationRelativeTo(null);
-            seleccionaCardTipo();
-            
+
             verReactivoJD.setVisible(true);
         }
 
