@@ -4,7 +4,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
-public interface AdminJList {
+public interface AdminJList extends SetRespuestas {
 
     default void addItem(DefaultListModel<String> modelo) {
         String newOne = JOptionPane.showInputDialog("Nueva respuesta correcta:");

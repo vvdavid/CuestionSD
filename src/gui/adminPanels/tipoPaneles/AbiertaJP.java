@@ -1,6 +1,6 @@
 package gui.adminPanels.tipoPaneles;
 
-public class AbiertaJP extends javax.swing.JPanel {
+public class AbiertaJP extends javax.swing.JPanel implements SetRespuestas {
 
     public AbiertaJP() {
         initComponents();
@@ -49,4 +49,19 @@ public class AbiertaJP extends javax.swing.JPanel {
     private javax.swing.JTextField abiertaJPCorrecta;
     private javax.swing.JLabel jLabel25;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void addCorrecta(String valor) {
+        abiertaJPCorrecta.setText(valor);
+    }
+
+    @Override
+    public void addIncorrecta(String valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void limpia() {
+        abiertaJPCorrecta.setText("");
+    }
 }

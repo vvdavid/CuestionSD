@@ -110,4 +110,20 @@ public class OpcionJP extends javax.swing.JPanel implements AdminJList {
     private javax.swing.JButton opcionJPIncorrectasAgregar;
     private javax.swing.JButton opcionJPIncorrectasEliminar;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void addCorrecta(String valor) {
+        opcionJPCorrecta.setText(valor);
+    }
+
+    @Override
+    public void addIncorrecta(String valor) {
+        modelo.addElement(valor);
+    }
+
+    @Override
+    public void limpia() {
+        modelo.removeAllElements();
+        opcionJPCorrecta.setText("");
+    }
 }

@@ -1,8 +1,6 @@
 package gui.adminPanels.tipoPaneles;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 public class MultipleJP extends javax.swing.JPanel implements AdminJList {
 
@@ -144,4 +142,20 @@ public class MultipleJP extends javax.swing.JPanel implements AdminJList {
     private javax.swing.JButton multipleJPIncorrectasAgregar;
     private javax.swing.JButton multipleJPIncorrectasEliminar;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void addCorrecta(String valor) {
+        modeloCorrectas.addElement(valor);
+    }
+
+    @Override
+    public void addIncorrecta(String valor) {
+        modeloIncorrectas.addElement(valor);
+    }
+    
+    @Override
+    public void limpia() {
+        modeloCorrectas.removeAllElements();
+        modeloIncorrectas.removeAllElements();
+    }
 }

@@ -3,7 +3,7 @@ package gui.adminPanels.tipoPaneles;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class CompletarJP extends javax.swing.JPanel {
+public class CompletarJP extends javax.swing.JPanel implements SetRespuestas {
 
     DefaultListModel<String> modelo = new DefaultListModel();
     public int respuestas;
@@ -92,5 +92,20 @@ public class CompletarJP extends javax.swing.JPanel {
         for (int i = 0; i < respuestas; i++) {
             modelo.addElement("Respuesta #" + (i + 1));
         }
+    }
+
+    @Override
+    public void addCorrecta(String valor) {
+        modelo.addElement(valor);
+    }
+
+    @Override
+    public void addIncorrecta(String valor) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void limpia() {
+        modelo.removeAllElements();
     }
 }

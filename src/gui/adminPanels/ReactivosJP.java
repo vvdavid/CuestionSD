@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import jdbc.ExamenJDBC;
 import jdbc.ReactivoJDBC;
+import jdbc.RespuestaJDBC;
 import jdbc.TipoJDBC;
 import pojos.Examen;
 import pojos.Tipo;
@@ -67,7 +68,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idTF = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripcionJTA = new javax.swing.JTextArea();
@@ -103,7 +104,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
         jLabel4.setText("ID:");
 
-        jTextField1.setEditable(false);
+        idTF.setEditable(false);
 
         jLabel9.setText("Descripción:");
 
@@ -144,7 +145,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
+                            .addComponent(idTF)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -154,7 +155,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 .addContainerGap()
                 .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,6 +344,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private javax.swing.JTextArea descripcionJTA;
     private javax.swing.JButton eliminarJB;
     public javax.swing.JComboBox<Examen> examenesJCB;
+    private javax.swing.JTextField idTF;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -357,7 +359,6 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton modificarJB;
     public javax.swing.JLabel multipleJL;
     public javax.swing.JLabel opcionJL;
@@ -392,7 +393,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             } else if (src == modificarJB) {
 //                modifica();
             } else if (src == verRespuestasJB) {
-//                ver();
+                if (tabla.getSelectedRow() != -1) {
+                    ver();
+                }
             } else if (src == eliminarJB) {
 //                elimina();
             } else {
@@ -432,11 +435,18 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         private void abreAgregaJD() {
             verReactivoJD.setTitle("Agregar reactivo");
 
+            descripcionJTA.setEnabled(true);
+            
             agregaTipoJCB.removeItemListener(this);
             TipoJDBC.cargaCombo(agregaTipoJCB);
             agregaTipoJCB.addItemListener(this);
+            agregaTipoJCB.setEnabled(true);
 
+            jButton5.setEnabled(true);
+            jButton6.setEnabled(true);
+            descripcionJTA.setEnabled(true);
             seleccionaCardTipo();
+
             verReactivoJD.pack();
             verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
 
@@ -457,6 +467,52 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 }
             }
             ((CompletarJP) completarJP).setRespuestas(respuestas);
+        }
+
+        private void ver() {
+            verReactivoJD.setTitle("Ver reactivo y respuestas");
+            //id
+            int idReactivo = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+            idTF.setText(idReactivo + "");
+            //descripcion
+            descripcionJTA.setText((String) tabla.getValueAt(tabla.getSelectedRow(), 1));
+            descripcionJTA.setEnabled(false);
+            //combo de tipo
+            agregaTipoJCB.removeItemListener(this);
+            TipoJDBC.cargaCombo(agregaTipoJCB);
+            agregaTipoJCB.addItemListener(this);
+            agregaTipoJCB.setEnabled(false);
+            Tipo tipo = (Tipo) tabla.getValueAt(tabla.getSelectedRow(), 2);
+            String nombre = tipo.getNombre();
+            for (int i = 0; i < agregaTipoJCB.getItemCount(); i++) {
+                if (agregaTipoJCB.getItemAt(i).getNombre().equals(nombre)) {
+                    agregaTipoJCB.setSelectedIndex(i);
+                    break;
+                }
+            }
+            //respuestas
+            CardLayout cl = (CardLayout) respuestasJP.getLayout();
+            cl.show(respuestasJP, String.valueOf(tipo.getId()));
+            
+            SetRespuestas panel;
+            switch (tipo.getId()) {
+                case 1: panel = (SetRespuestas) multipleJP; break; 
+                case 2: panel = (SetRespuestas) opcionJP; break;
+                case 3: panel = (SetRespuestas) abiertaJP; break;
+                case 4: panel = (SetRespuestas) completarJP; break;
+                default:
+                    throw new AssertionError();
+            }
+            RespuestaJDBC.cargaRespuestas(panel, idReactivo);
+
+            //resto del JDialog
+            jButton5.setEnabled(false);
+            jButton6.setEnabled(false);
+
+            verReactivoJD.pack();
+            verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
+
+            verReactivoJD.setVisible(true);
         }
 
     }
