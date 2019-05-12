@@ -25,11 +25,7 @@ public class CompletarJP extends javax.swing.JPanel {
 
         jLabel21.setText("Respuestas correctas");
 
-        completarJPCorrectas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        completarJPCorrectas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane10.setViewportView(completarJPCorrectas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
