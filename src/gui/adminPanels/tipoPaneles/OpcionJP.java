@@ -1,6 +1,10 @@
 package gui.adminPanels.tipoPaneles;
 
-public class OpcionJP extends javax.swing.JPanel {
+import javax.swing.DefaultListModel;
+
+public class OpcionJP extends javax.swing.JPanel implements AdminJList {
+
+    DefaultListModel<String> modelo = new DefaultListModel();
 
     /**
      * Creates new form OpcionJP
@@ -21,23 +25,28 @@ public class OpcionJP extends javax.swing.JPanel {
         opcionJPIncorrectasEliminar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        opcionJPIncorrectas = new javax.swing.JList<>();
+        opcionJPIncorrectas = new javax.swing.JList<String>(modelo);
         opcionJPIncorrectasAgregar = new javax.swing.JButton();
         opcionJPCorrecta = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
 
         opcionJPIncorrectasEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/remove.png"))); // NOI18N
+        opcionJPIncorrectasEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionJPIncorrectasEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Respuestas incorrectas");
 
-        opcionJPIncorrectas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane6.setViewportView(opcionJPIncorrectas);
 
         opcionJPIncorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        opcionJPIncorrectasAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionJPIncorrectasAgregarActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Respuesta correcta");
 
@@ -81,6 +90,14 @@ public class OpcionJP extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcionJPIncorrectasAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionJPIncorrectasAgregarActionPerformed
+        addItem(modelo);
+    }//GEN-LAST:event_opcionJPIncorrectasAgregarActionPerformed
+
+    private void opcionJPIncorrectasEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionJPIncorrectasEliminarActionPerformed
+        removeItem(opcionJPIncorrectas, modelo);
+    }//GEN-LAST:event_opcionJPIncorrectasEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

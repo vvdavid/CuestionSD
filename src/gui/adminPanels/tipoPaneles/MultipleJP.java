@@ -1,6 +1,12 @@
 package gui.adminPanels.tipoPaneles;
 
-public class MultipleJP extends javax.swing.JPanel {
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
+public class MultipleJP extends javax.swing.JPanel implements AdminJList {
+
+    DefaultListModel<String> modeloCorrectas = new DefaultListModel(), modeloIncorrectas = new DefaultListModel();
 
     public MultipleJP() {
         initComponents();
@@ -19,38 +25,50 @@ public class MultipleJP extends javax.swing.JPanel {
         multipleJPIncorrectasEliminar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         JScrollPane1 = new javax.swing.JScrollPane();
-        multipleJPIncorrectas = new javax.swing.JList<>();
+        multipleJPIncorrectas = new javax.swing.JList<String>(modeloIncorrectas);
         multipleJPIncorrectasAgregar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        multipleJPCorrectas = new javax.swing.JList<>();
+        multipleJPCorrectas = new javax.swing.JList<String>(modeloCorrectas);
         multipleJPCorrectasAgregar = new javax.swing.JButton();
 
         multipleJPCorrectasEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/remove.png"))); // NOI18N
+        multipleJPCorrectasEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multipleJPCorrectasEliminarActionPerformed(evt);
+            }
+        });
 
         multipleJPIncorrectasEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/remove.png"))); // NOI18N
+        multipleJPIncorrectasEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multipleJPIncorrectasEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Respuestas incorrectas");
 
-        multipleJPIncorrectas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        multipleJPIncorrectas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         JScrollPane1.setViewportView(multipleJPIncorrectas);
 
         multipleJPIncorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        multipleJPIncorrectasAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multipleJPIncorrectasAgregarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Respuestas correctas");
 
-        multipleJPCorrectas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        multipleJPCorrectas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(multipleJPCorrectas);
 
         multipleJPCorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        multipleJPCorrectasAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multipleJPCorrectasAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -96,6 +114,22 @@ public class MultipleJP extends javax.swing.JPanel {
                 .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void multipleJPCorrectasAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multipleJPCorrectasAgregarActionPerformed
+        addItem(modeloCorrectas);
+    }//GEN-LAST:event_multipleJPCorrectasAgregarActionPerformed
+
+    private void multipleJPCorrectasEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multipleJPCorrectasEliminarActionPerformed
+        removeItem(multipleJPCorrectas, modeloCorrectas);
+    }//GEN-LAST:event_multipleJPCorrectasEliminarActionPerformed
+
+    private void multipleJPIncorrectasAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multipleJPIncorrectasAgregarActionPerformed
+        addItem(modeloIncorrectas);
+    }//GEN-LAST:event_multipleJPIncorrectasAgregarActionPerformed
+
+    private void multipleJPIncorrectasEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multipleJPIncorrectasEliminarActionPerformed
+        removeItem(multipleJPIncorrectas, modeloIncorrectas);
+    }//GEN-LAST:event_multipleJPIncorrectasEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
