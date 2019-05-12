@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -31,7 +33,13 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     private void addListeners() {
         examenesJCB.addItemListener(driver);
         //admin reactivos
-        
+        descripcionJTA.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                driver.keyTyped();
+            }
+
+        });
         agregaTipoJCB.addItemListener(driver);
         agregarJB.addActionListener(driver);
         modificarJB.addActionListener(driver);
@@ -438,6 +446,17 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         private void seleccionaCardTipo() {
             CardLayout cl = (CardLayout) respuestasJP.getLayout();
             cl.show(respuestasJP, String.valueOf(((Tipo) agregaTipoJCB.getSelectedItem()).getId()));
+        }
+
+        private void keyTyped() {
+            int respuestas = 0;
+            String descripcion = descripcionJTA.getText();
+            for (char c : descripcion.toCharArray()) {
+                if (c == '~') {
+                    respuestas++;
+                }
+            }
+            ((CompletarJP) completarJP).setRespuestas(respuestas);
         }
 
     }

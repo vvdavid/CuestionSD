@@ -39,6 +39,7 @@ public class OpcionJP extends javax.swing.JPanel implements AdminJList {
 
         jLabel13.setText("Respuestas incorrectas");
 
+        opcionJPIncorrectas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane6.setViewportView(opcionJPIncorrectas);
 
         opcionJPIncorrectasAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N

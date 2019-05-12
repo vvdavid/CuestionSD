@@ -1,6 +1,12 @@
 package gui.adminPanels.tipoPaneles;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 public class CompletarJP extends javax.swing.JPanel {
+
+    DefaultListModel<String> modelo = new DefaultListModel();
+    public int respuestas;
 
     public CompletarJP() {
         initComponents();
@@ -18,10 +24,15 @@ public class CompletarJP extends javax.swing.JPanel {
         completarJPModificar = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        completarJPCorrectas = new javax.swing.JList<>();
+        completarJPCorrectas = new javax.swing.JList<String>(modelo);
 
         completarJPModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/modify.png"))); // NOI18N
         completarJPModificar.setText("Modificar respuesta");
+        completarJPModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completarJPModificarActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Respuestas correctas");
 
@@ -58,6 +69,15 @@ public class CompletarJP extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void completarJPModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarJPModificarActionPerformed
+        int index = completarJPCorrectas.getSelectedIndex();
+        if (index != -1) {
+            String input = JOptionPane.showInputDialog("Respuesta:");
+            modelo.setElementAt(input.length() == 0 ? " " : input, index);
+        }
+
+    }//GEN-LAST:event_completarJPModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> completarJPCorrectas;
@@ -65,4 +85,12 @@ public class CompletarJP extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JScrollPane jScrollPane10;
     // End of variables declaration//GEN-END:variables
+
+    public void setRespuestas(int respuestas) {
+        this.respuestas = respuestas;
+        modelo.clear();
+        for (int i = 0; i < respuestas; i++) {
+            modelo.addElement("Respuesta #" + (i + 1));
+        }
+    }
 }

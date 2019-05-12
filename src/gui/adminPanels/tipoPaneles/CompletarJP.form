@@ -58,6 +58,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar respuesta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="completarJPModificarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel21">
       <Properties>
@@ -79,6 +82,7 @@
             <Property name="selectionMode" type="int" value="0"/>
           </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList&lt;String&gt;(modelo)"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
