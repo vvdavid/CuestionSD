@@ -8,14 +8,17 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import jdbc.ExamenJDBC;
 import jdbc.ReactivoJDBC;
 import jdbc.RespuestaJDBC;
 import jdbc.TipoJDBC;
 import pojos.Examen;
+import pojos.Respuesta;
 import pojos.Tipo;
 
 public class ReactivosJP extends javax.swing.JPanel implements Updateable {
@@ -47,6 +50,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         eliminarJB.addActionListener(driver);
         verRespuestasJB.addActionListener(driver);
         jButton5.addActionListener(driver);
+        jButton6.addActionListener(driver);
     }
 
     @Override
@@ -399,6 +403,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 }
             } else if (src == jButton5) {
                 verReactivoJD.setVisible(false);
+            } else if (src == jButton6) {
+                agrega();
             } else if (src == eliminarJB) {
 //                elimina();
             } else {
@@ -445,6 +451,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             agregaTipoJCB.addItemListener(this);
             agregaTipoJCB.setEnabled(true);
 
+            idTF.setText("");
+            descripcionJTA.setText("");
+            
             jButton5.setEnabled(true);
             jButton6.setEnabled(true);
             descripcionJTA.setEnabled(true);
@@ -458,7 +467,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
         private void seleccionaCardTipo() {
             CardLayout cl = (CardLayout) respuestasJP.getLayout();
-            cl.show(respuestasJP, String.valueOf(((Tipo) agregaTipoJCB.getSelectedItem()).getId()));
+            int id = ((Tipo) agregaTipoJCB.getSelectedItem()).getId();
+            cl.show(respuestasJP, String.valueOf(id));
+            getRespuestasPanel(id).limpia();
         }
 
         private void keyTyped() {
@@ -497,16 +508,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             CardLayout cl = (CardLayout) respuestasJP.getLayout();
             cl.show(respuestasJP, String.valueOf(tipo.getId()));
 
-            SetRespuestas panel;
-            switch (tipo.getId()) {
-                case 1: panel = (SetRespuestas) multipleJP; break; 
-                case 2: panel = (SetRespuestas) opcionJP; break;
-                case 3: panel = (SetRespuestas) abiertaJP; break;
-                case 4: panel = (SetRespuestas) completarJP; break;
-                default:
-                    throw new AssertionError();
-            }
-            RespuestaJDBC.cargaRespuestas(panel, idReactivo);
+            RespuestaJDBC.cargaRespuestas(getRespuestasPanel(tipo.getId()), idReactivo);
 
             //resto del JDialog
             jButton5.setEnabled(false);
@@ -516,6 +518,49 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
 
             verReactivoJD.setVisible(true);
+        }
+
+        private SetRespuestas getRespuestasPanel(int idTipo){
+        SetRespuestas panel;
+            switch (idTipo) {
+                case 1: panel = (SetRespuestas) multipleJP; break; 
+                case 2: panel = (SetRespuestas) opcionJP; break;
+                case 3: panel = (SetRespuestas) abiertaJP; break;
+                case 4: panel = (SetRespuestas) completarJP; break;
+                default:
+                    throw new AssertionError();
+            }
+            return panel;
+        }
+        
+        private void agrega() {
+            //pre-conditions
+            String descripcion = descripcionJTA.getText();
+            if (descripcion.length() == 0) {
+                JOptionPane.showMessageDialog(ReactivosJP.this, "Introduzca una descripción para el reactivo", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            //registar reactivo
+            int idExamen = ((Examen) examenesJCB.getSelectedItem()).getId();
+            int idTipo = ((Tipo) agregaTipoJCB.getSelectedItem()).getId();
+            SetRespuestas panel = getRespuestasPanel(idTipo);
+            int idReactivo = ReactivoJDBC.agrega(idExamen, idTipo, descripcion);
+            //registar respuestas
+            ArrayList<Respuesta> respuestas = panel.getRespuestas(idReactivo);
+            RespuestaJDBC.agrega(respuestas);
+            //finish
+            panel.limpia();
+            limpiaVerReactivo();
+            cargaTablaYContadores();
+            
+            verReactivoJD.setVisible(false);
+            JOptionPane.showMessageDialog(ReactivosJP.this, "Reactivo agregado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        private void limpiaVerReactivo() {
+            idTF.setText("");
+            descripcionJTA.setText("");
+            agregaTipoJCB.setSelectedIndex(0);
         }
 
     }
