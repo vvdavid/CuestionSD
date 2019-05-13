@@ -14,6 +14,12 @@ public class Respuesta {
         this.correcta = correcta;
     }
 
+    public Respuesta(int idReactivo, String descripcion, boolean correcta) {
+        this.idReactivo = idReactivo;
+        this.descripcion = descripcion;
+        this.correcta = correcta;
+    }
+
     public int getId() {
         return id;
     }
