@@ -46,6 +46,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         modificarJB.addActionListener(driver);
         eliminarJB.addActionListener(driver);
         verRespuestasJB.addActionListener(driver);
+        jButton5.addActionListener(driver);
     }
 
     @Override
@@ -396,6 +397,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 if (tabla.getSelectedRow() != -1) {
                     ver();
                 }
+            } else if (src == jButton5) {
+                verReactivoJD.setVisible(false);
             } else if (src == eliminarJB) {
 //                elimina();
             } else {
@@ -436,7 +439,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             verReactivoJD.setTitle("Agregar reactivo");
 
             descripcionJTA.setEnabled(true);
-            
+
             agregaTipoJCB.removeItemListener(this);
             TipoJDBC.cargaCombo(agregaTipoJCB);
             agregaTipoJCB.addItemListener(this);
@@ -493,7 +496,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             //respuestas
             CardLayout cl = (CardLayout) respuestasJP.getLayout();
             cl.show(respuestasJP, String.valueOf(tipo.getId()));
-            
+
             SetRespuestas panel;
             switch (tipo.getId()) {
                 case 1: panel = (SetRespuestas) multipleJP; break; 
