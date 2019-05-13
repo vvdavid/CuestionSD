@@ -3,6 +3,7 @@ package jdbc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -57,4 +58,26 @@ public class ReactivoJDBC {
             System.err.println(e);
         }
     }
+
+    public static int agrega(int idExamen, int idTipo, String descripcion) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "INSERT INTO Reactivo (idExamen, idTipo, descripcion) VALUES (?,?,?)",
+                        Statement.RETURN_GENERATED_KEYS);) {
+
+            ps.setInt(1, idExamen);
+            ps.setInt(2, idTipo);
+            ps.setString(3, descripcion);
+            ps.executeUpdate();
+
+            ResultSet keys = ps.getGeneratedKeys();
+            keys.next();
+            return keys.getInt(1);
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return 0;
+    }
+
 }
