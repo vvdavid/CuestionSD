@@ -1,7 +1,9 @@
 package gui.adminPanels.tipoPaneles;
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import pojos.Respuesta;
 
 public class CompletarJP extends javax.swing.JPanel implements SetRespuestas {
 
@@ -107,5 +109,15 @@ public class CompletarJP extends javax.swing.JPanel implements SetRespuestas {
     @Override
     public void limpia() {
         modelo.removeAllElements();
+    }
+
+    @Override
+    public ArrayList<Respuesta> getRespuestas(int idReactivo) {
+        ArrayList<Respuesta> arrayList = new ArrayList<>();
+        for (Object object : modelo.toArray()) {
+            String descripcion = (String) object;
+            arrayList.add(new Respuesta(idReactivo, descripcion, true));
+        }
+        return arrayList;
     }
 }

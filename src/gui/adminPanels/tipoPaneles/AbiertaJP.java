@@ -1,5 +1,8 @@
 package gui.adminPanels.tipoPaneles;
 
+import java.util.ArrayList;
+import pojos.Respuesta;
+
 public class AbiertaJP extends javax.swing.JPanel implements SetRespuestas {
 
     public AbiertaJP() {
@@ -63,5 +66,12 @@ public class AbiertaJP extends javax.swing.JPanel implements SetRespuestas {
     @Override
     public void limpia() {
         abiertaJPCorrecta.setText("");
+    }
+
+    @Override
+    public ArrayList<Respuesta> getRespuestas(int idReactivo) {
+        ArrayList<Respuesta> arrayList = new ArrayList<>();
+        arrayList.add(new Respuesta(idReactivo, abiertaJPCorrecta.getText(), true));
+        return arrayList;
     }
 }

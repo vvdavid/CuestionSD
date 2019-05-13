@@ -1,6 +1,8 @@
 package gui.adminPanels.tipoPaneles;
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import pojos.Respuesta;
 
 public class MultipleJP extends javax.swing.JPanel implements AdminJList {
 
@@ -152,10 +154,24 @@ public class MultipleJP extends javax.swing.JPanel implements AdminJList {
     public void addIncorrecta(String valor) {
         modeloIncorrectas.addElement(valor);
     }
-    
+
     @Override
     public void limpia() {
         modeloCorrectas.removeAllElements();
         modeloIncorrectas.removeAllElements();
+    }
+
+    @Override
+    public ArrayList<Respuesta> getRespuestas(int idReactivo) {
+        ArrayList<Respuesta> arrayList = new ArrayList<>();
+        for (Object object : modeloCorrectas.toArray()) {
+            String descripcion = (String) object;
+            arrayList.add(new Respuesta(idReactivo, descripcion, true));
+        }
+        for (Object object : modeloIncorrectas.toArray()) {
+            String descripcion = (String) object;
+            arrayList.add(new Respuesta(idReactivo, descripcion, false));
+        }
+        return arrayList;
     }
 }

@@ -1,6 +1,8 @@
 package gui.adminPanels.tipoPaneles;
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import pojos.Respuesta;
 
 public class OpcionJP extends javax.swing.JPanel implements AdminJList {
 
@@ -125,5 +127,16 @@ public class OpcionJP extends javax.swing.JPanel implements AdminJList {
     public void limpia() {
         modelo.removeAllElements();
         opcionJPCorrecta.setText("");
+    }
+
+    @Override
+    public ArrayList<Respuesta> getRespuestas(int idReactivo) {
+        ArrayList<Respuesta> arrayList = new ArrayList<>();
+        arrayList.add(new Respuesta(idReactivo, opcionJPCorrecta.getText(), true));
+        for (Object object : modelo.toArray()) {
+            String descripcion = (String) object;
+            arrayList.add(new Respuesta(idReactivo, descripcion, false));
+        }
+        return arrayList;
     }
 }
