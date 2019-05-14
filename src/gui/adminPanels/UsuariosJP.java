@@ -28,7 +28,7 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
         jPanel2 = new javax.swing.JPanel();
         agregarUsuariosJB = new javax.swing.JButton();
         modificarUsuariosJB = new javax.swing.JButton();
-        eliminarUsuariosJB1 = new javax.swing.JButton();
+        eliminarUsuariosJB = new javax.swing.JButton();
 
         tablaUsuariosJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,8 +67,8 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
         modificarUsuariosJB.setText("Modificar");
 
-        eliminarUsuariosJB1.setText("Eliminar");
-        eliminarUsuariosJB1.setToolTipText("Solo es posible un examen si no tiene historial de algún usuario");
+        eliminarUsuariosJB.setText("Eliminar");
+        eliminarUsuariosJB.setToolTipText("Solo es posible un examen si no tiene historial de algún usuario");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -79,7 +79,7 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modificarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(agregarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eliminarUsuariosJB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eliminarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -90,7 +90,7 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(modificarUsuariosJB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eliminarUsuariosJB1)
+                .addComponent(eliminarUsuariosJB)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
@@ -119,7 +119,7 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton agregarUsuariosJB;
-    public javax.swing.JButton eliminarUsuariosJB1;
+    public javax.swing.JButton eliminarUsuariosJB;
     public javax.swing.JPanel jPanel2;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JButton modificarUsuariosJB;
