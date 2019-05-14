@@ -390,6 +390,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             respuestasJP.add(completarJP, "4");
         }
 
+        //manejar eventos
         @Override
         public void actionPerformed(ActionEvent ae) {
             JButton src = (JButton) ae.getSource();
@@ -426,7 +427,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             }
 
         }
-
+        
+        //cargar datos
         @Override
         public void updateData() {
             examenesJCB.removeItemListener(this);
@@ -440,7 +442,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             ReactivoJDBC.cargaTablaTipoCompleto(tabla, idExamen);
             ReactivoJDBC.cargaContadores(idExamen, totalJL, multipleJL, opcionJL, abiertaJL, completarJL);
         }
-
+        
+        //botones principales
         private void abreAgregaJD() {
             verReactivoJD.setTitle("Agregar reactivo");
 
@@ -464,25 +467,7 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
             verReactivoJD.setVisible(true);
         }
-
-        private void seleccionaCardTipo() {
-            CardLayout cl = (CardLayout) respuestasJP.getLayout();
-            int id = ((Tipo) agregaTipoJCB.getSelectedItem()).getId();
-            cl.show(respuestasJP, String.valueOf(id));
-            getRespuestasPanel(id).limpia();
-        }
-
-        private void keyTyped() {
-            int respuestas = 0;
-            String descripcion = descripcionJTA.getText();
-            for (char c : descripcion.toCharArray()) {
-                if (c == '~') {
-                    respuestas++;
-                }
-            }
-            ((CompletarJP) completarJP).setRespuestas(respuestas);
-        }
-
+        
         private void ver() {
             verReactivoJD.setTitle("Ver reactivo y respuestas");
             //id
@@ -519,20 +504,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
             verReactivoJD.setVisible(true);
         }
-
-        private SetRespuestas getRespuestasPanel(int idTipo){
-        SetRespuestas panel;
-            switch (idTipo) {
-                case 1: panel = (SetRespuestas) multipleJP; break; 
-                case 2: panel = (SetRespuestas) opcionJP; break;
-                case 3: panel = (SetRespuestas) abiertaJP; break;
-                case 4: panel = (SetRespuestas) completarJP; break;
-                default:
-                    throw new AssertionError();
-            }
-            return panel;
-        }
         
+        //acciones principales
         private void agrega() {
             //pre-conditions
             String descripcion = descripcionJTA.getText();
@@ -555,6 +528,38 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             
             verReactivoJD.setVisible(false);
             JOptionPane.showMessageDialog(ReactivosJP.this, "Reactivo agregado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        //utilidades
+        private void seleccionaCardTipo() {
+            CardLayout cl = (CardLayout) respuestasJP.getLayout();
+            int id = ((Tipo) agregaTipoJCB.getSelectedItem()).getId();
+            cl.show(respuestasJP, String.valueOf(id));
+            getRespuestasPanel(id).limpia();
+        }
+
+        private void keyTyped() {
+            int respuestas = 0;
+            String descripcion = descripcionJTA.getText();
+            for (char c : descripcion.toCharArray()) {
+                if (c == '~') {
+                    respuestas++;
+                }
+            }
+            ((CompletarJP) completarJP).setRespuestas(respuestas);
+        }
+
+        private SetRespuestas getRespuestasPanel(int idTipo){
+        SetRespuestas panel;
+            switch (idTipo) {
+                case 1: panel = (SetRespuestas) multipleJP; break; 
+                case 2: panel = (SetRespuestas) opcionJP; break;
+                case 3: panel = (SetRespuestas) abiertaJP; break;
+                case 4: panel = (SetRespuestas) completarJP; break;
+                default:
+                    throw new AssertionError();
+            }
+            return panel;
         }
 
         private void limpiaVerReactivo() {
