@@ -1,6 +1,12 @@
 package gui.adminPanels;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.UUID;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import jdbc.UsuarioJDBC;
+import tools.GUITools;
 
 public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
@@ -12,6 +18,14 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
     public UsuariosJP() {
         initComponents();
         driver = new Driver();
+        addListeners();
+    }
+
+    private void addListeners() {
+        agregarUsuariosJB.addActionListener(driver);
+        modificarNombreJB.addActionListener(driver);
+        reiniciaPassJB.addActionListener(driver);
+        eliminarUsuariosJB.addActionListener(driver);
     }
 
     /**
@@ -27,8 +41,9 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
         tablaUsuariosJT = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         agregarUsuariosJB = new javax.swing.JButton();
-        modificarUsuariosJB = new javax.swing.JButton();
+        modificarNombreJB = new javax.swing.JButton();
         eliminarUsuariosJB = new javax.swing.JButton();
+        reiniciaPassJB = new javax.swing.JButton();
 
         tablaUsuariosJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,10 +80,12 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
 
         agregarUsuariosJB.setText("Agregar");
 
-        modificarUsuariosJB.setText("Modificar");
+        modificarNombreJB.setText("Modificar nombre");
 
         eliminarUsuariosJB.setText("Eliminar");
         eliminarUsuariosJB.setToolTipText("Solo es posible un examen si no tiene historial de algún usuario");
+
+        reiniciaPassJB.setText("Reiniciar contraseña");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -77,9 +94,10 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                    .addComponent(modificarNombreJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(agregarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eliminarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eliminarUsuariosJB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reiniciaPassJB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -87,11 +105,13 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(agregarUsuariosJB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modificarUsuariosJB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(modificarNombreJB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(reiniciaPassJB)
+                .addGap(18, 18, 18)
                 .addComponent(eliminarUsuariosJB)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -122,7 +142,8 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
     public javax.swing.JButton eliminarUsuariosJB;
     public javax.swing.JPanel jPanel2;
     public javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JButton modificarUsuariosJB;
+    public javax.swing.JButton modificarNombreJB;
+    public javax.swing.JButton reiniciaPassJB;
     public javax.swing.JTable tablaUsuariosJT;
     // End of variables declaration//GEN-END:variables
 
@@ -131,12 +152,91 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
         driver.updateData();
     }
 
-    private class Driver implements Updateable {
+    private class Driver implements Updateable, ActionListener {
 
         @Override
         public void updateData() {
             UsuarioJDBC.cargaTabla(tablaUsuariosJT);
         }
 
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            JButton src = (JButton) ae.getSource();
+            if (src == agregarUsuariosJB) {
+                agrega();
+            } else if (src == modificarNombreJB) {
+                if (tablaUsuariosJT.getSelectedRow() != -1) {
+                    modificaNombre();
+                }
+            } else if (src == reiniciaPassJB) {
+                if (tablaUsuariosJT.getSelectedRow() != -1) {
+                    reiniciaPass();
+                }
+            } else if (src == eliminarUsuariosJB) {
+                if (tablaUsuariosJT.getSelectedRow() != -1) {
+                    elimina();
+                }
+            } else {
+                throw new UnsupportedOperationException();
+            }
+        }
+
+        private void agrega() {
+            String nombre;
+            nombre = JOptionPane.showInputDialog(UsuariosJP.this, "Nombre de usuario:", "Nuevo usuario", JOptionPane.QUESTION_MESSAGE);
+            if (nombre == null) {
+                return;
+            }
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(UsuariosJP.this, "Inserte un nombre de usuario válido", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            String password = newPassword();
+            UsuarioJDBC.agrega(nombre, GUITools.encrypt(password));
+
+            updateData();
+            JOptionPane.showMessageDialog(UsuariosJP.this, "Usuario agregado. Contraseña: " + password, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        private void modificaNombre() {
+            String nombre;
+            nombre = JOptionPane.showInputDialog(UsuariosJP.this, "Nombre de usuario:", "Nuevo usuario", JOptionPane.QUESTION_MESSAGE);
+            if (nombre == null) {
+                return;
+            }
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(UsuariosJP.this, "Inserte un nombre de usuario válido", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            UsuarioJDBC.actualiza(Integer.parseInt(tablaUsuariosJT.getValueAt(tablaUsuariosJT.getSelectedRow(), 0).toString().toString()),
+                    nombre,
+                    tablaUsuariosJT.getValueAt(tablaUsuariosJT.getSelectedRow(), 2).toString());
+            updateData();
+            JOptionPane.showMessageDialog(UsuariosJP.this, "Usuario modificado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        private void elimina() {
+            int res = JOptionPane.showConfirmDialog(UsuariosJP.this, "¿Seguro que desea eliminar el usuario seleccionado y toda su información? Esta acción no se puede deshacer", "Confirmación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.OK_OPTION) {
+                UsuarioJDBC.elimina(tablaUsuariosJT.getValueAt(tablaUsuariosJT.getSelectedRow(), 0).toString());
+                updateData();
+            }
+        }
+
+        private void reiniciaPass() {
+            int res = JOptionPane.showConfirmDialog(UsuariosJP.this, "¿Seguro que desea inicializar la contraseña del usuario seleccionado?", "Confirmación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.OK_OPTION) {
+                String password = newPassword();
+                UsuarioJDBC.actualiza(Integer.parseInt(tablaUsuariosJT.getValueAt(tablaUsuariosJT.getSelectedRow(), 0).toString().toString()),
+                        tablaUsuariosJT.getValueAt(tablaUsuariosJT.getSelectedRow(), 1).toString().toString(),
+                        GUITools.encrypt(password));
+                JOptionPane.showMessageDialog(UsuariosJP.this, "Contraseña: " + password, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            }
+            updateData();
+        }
+
+        private String newPassword() {
+            return UUID.randomUUID().toString().replaceAll("-", "").substring(28);
+        }
     }
 }

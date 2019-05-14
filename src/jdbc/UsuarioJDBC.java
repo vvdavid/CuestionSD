@@ -53,4 +53,39 @@ public class UsuarioJDBC {
             System.err.println(ex);
         }
     }
+
+    public static void agrega(String nombre, String password) {
+        try (PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                "INSERT INTO usuario (nombre, pass) VALUES (?, ?)");) {
+            ps.setString(1, nombre);
+            ps.setString(2, password);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    public static void actualiza(int id, String nombre, String pass) {
+        try (PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                "UPDATE usuario SET nombre=?, pass=? WHERE id=?");) {
+            ps.setString(1, nombre);
+            ps.setString(2, pass);
+            ps.setInt(3, id);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    public static void elimina(String id) {
+        try (PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                "DELETE FROM usuario WHERE id=?");) {
+            ps.setString(1, id);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
 }
