@@ -412,7 +412,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                     modifica();
                 }
             } else if (src == eliminarJB) {
-//                elimina();
+                if (tabla.getSelectedRow() != -1) {
+                    elimina();
+                }
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -545,6 +547,17 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
 
             verReactivoJD.setVisible(true);
+        }
+
+        private void elimina() {
+            int res = JOptionPane.showConfirmDialog(ReactivosJP.this, "¿Seguro que desea eliminar el reactivo seleccionado y todas sus respuestas?", "Confirmación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.OK_OPTION) {
+                int examenIndex = examenesJCB.getSelectedIndex();
+                int idReactivo = Integer.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
+                ReactivoJDBC.elimina(idReactivo);
+                updateData();
+                examenesJCB.setSelectedIndex(examenIndex);
+            }
         }
 
         //acciones principales
