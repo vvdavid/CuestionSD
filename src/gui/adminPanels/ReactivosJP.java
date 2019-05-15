@@ -445,9 +445,12 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         }
 
         private void cargaTablaYContadores() {
-            int idExamen = ((Examen) examenesJCB.getSelectedItem()).getId();
-            ReactivoJDBC.cargaTablaTipoCompleto(tabla, idExamen);
-            ReactivoJDBC.cargaContadores(idExamen, totalJL, multipleJL, opcionJL, abiertaJL, completarJL);
+            Examen selectedItem = (Examen) examenesJCB.getSelectedItem();
+            if (selectedItem != null) {
+                int idExamen = selectedItem.getId();
+                ReactivoJDBC.cargaTablaTipoCompleto(tabla, idExamen);
+                ReactivoJDBC.cargaContadores(idExamen, totalJL, multipleJL, opcionJL, abiertaJL, completarJL);
+            }
         }
 
         //botones principales
