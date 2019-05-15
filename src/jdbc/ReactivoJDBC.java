@@ -80,4 +80,17 @@ public class ReactivoJDBC {
         return 0;
     }
 
+    public static void actualiza(int idReactivo, int idTipo, String descripcion) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "UPDATE reactivo SET descripcion=?, idTipo=? WHERE id=?");) {
+            ps.setString(1, descripcion);
+            ps.setInt(2, idTipo);
+            ps.setInt(3, idReactivo);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
 }
