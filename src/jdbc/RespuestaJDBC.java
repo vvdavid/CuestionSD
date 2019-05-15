@@ -45,4 +45,15 @@ public class RespuestaJDBC {
             System.err.println(e);
         }
     }
+
+    public static void elimina(int idReactivo) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "DELETE FROM respuesta WHERE idReactivo=?");) {
+            ps.setInt(1, idReactivo);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
 }
