@@ -93,4 +93,14 @@ public class ReactivoJDBC {
         }
     }
 
+    public static void elimina(int id) {
+        try (PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                "DELETE FROM reactivo WHERE id=?");) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
 }
