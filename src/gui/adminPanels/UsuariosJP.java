@@ -192,10 +192,12 @@ public class UsuariosJP extends javax.swing.JPanel implements Updateable {
                 return;
             }
             String password = newPassword();
-            UsuarioJDBC.agrega(nombre, GUITools.encrypt(password));
-
-            updateData();
-            JOptionPane.showMessageDialog(UsuariosJP.this, "Usuario agregado. Contraseña: " + password, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            if (UsuarioJDBC.agrega(nombre, GUITools.encrypt(password))) {
+                updateData();
+                JOptionPane.showMessageDialog(UsuariosJP.this, "Usuario agregado. Contraseña: " + password, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(UsuariosJP.this, "Los nombres de usuario deben ser únicos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
         private void modificaNombre() {

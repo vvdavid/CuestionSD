@@ -3,6 +3,7 @@ package jdbc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import pojos.Usuario;
@@ -54,14 +55,15 @@ public class UsuarioJDBC {
         }
     }
 
-    public static void agrega(String nombre, String password) {
+    public static boolean agrega(String nombre, String password) {
         try (PreparedStatement ps = DBTools.getConnection().prepareStatement(
                 "INSERT INTO usuario (nombre, pass) VALUES (?, ?)");) {
             ps.setString(1, nombre);
             ps.setString(2, password);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
-            System.err.println(e);
+            return false;
         }
     }
 
