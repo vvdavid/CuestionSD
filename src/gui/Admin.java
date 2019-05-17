@@ -1,10 +1,12 @@
 package gui;
 
 import com.alee.laf.WebLookAndFeel;
+import com.alee.laf.optionpane.WebOptionPane;
 import gui.adminPanels.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -54,6 +56,11 @@ public class Admin extends javax.swing.JFrame {
         panelJTP = new javax.swing.JTabbedPane();
         goBackJB = new javax.swing.JButton();
         adminReactivosJB = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cuestion - Administrador");
@@ -69,6 +76,34 @@ public class Admin extends javax.swing.JFrame {
 
         adminReactivosJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/reactivo.png"))); // NOI18N
         adminReactivosJB.setText("Administrar reactivos");
+
+        jMenu3.setText("Archivo");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem2.setText("Salir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Ayuda");
+
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jMenuItem3.setText("Acerca de...");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem3);
+
+        jMenuBar2.add(jMenu4);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,12 +133,23 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(goBackJB)
                     .addComponent(adminReactivosJB))
                 .addGap(18, 18, 18)
-                .addComponent(panelJTP, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addComponent(panelJTP, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        //Mostrar en título el texto del JMenuItem
+        WebOptionPane.showMessageDialog(this, "Cuestion 0.1",
+            ((JMenuItem) evt.getSource()).getText(),
+            WebOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +192,11 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton adminReactivosJB;
     private javax.swing.JButton adminUsuariosJB;
     private javax.swing.JButton goBackJB;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JTabbedPane panelJTP;
     // End of variables declaration//GEN-END:variables
 
