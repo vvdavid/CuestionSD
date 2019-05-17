@@ -64,7 +64,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel21">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Respuestas correctas"/>
+        <Property name="text" type="java.lang.String" value="Respuestas correctas (agregar con el caracter &apos;~&apos;)"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane10">

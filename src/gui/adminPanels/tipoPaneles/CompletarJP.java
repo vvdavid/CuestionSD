@@ -36,7 +36,7 @@ public class CompletarJP extends javax.swing.JPanel implements SetRespuestas {
             }
         });
 
-        jLabel21.setText("Respuestas correctas");
+        jLabel21.setText("Respuestas correctas (agregar con el caracter '~')");
 
         completarJPCorrectas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane10.setViewportView(completarJPCorrectas);
