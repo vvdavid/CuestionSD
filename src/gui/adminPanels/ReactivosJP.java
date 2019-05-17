@@ -568,13 +568,18 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         //acciones principales
         private void agrega() {
             //pre-conditions
+            Object selectedItem = examenesJCB.getSelectedItem();
+            if (selectedItem == null) {
+                JOptionPane.showMessageDialog(ReactivosJP.this, "No hay examen seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             String descripcion = descripcionJTA.getText();
             if (descripcion.length() == 0) {
                 JOptionPane.showMessageDialog(ReactivosJP.this, "Introduzca una descripción para el reactivo", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             //registar reactivo
-            int idExamen = ((Examen) examenesJCB.getSelectedItem()).getId();
+            int idExamen = ((Examen) selectedItem).getId();
             int idTipo = ((Tipo) agregaTipoJCB.getSelectedItem()).getId();
             SetRespuestas panel = getRespuestasPanel(idTipo);
             int idReactivo = ReactivoJDBC.agrega(idExamen, idTipo, descripcion);
