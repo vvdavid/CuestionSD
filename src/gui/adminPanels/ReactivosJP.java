@@ -49,8 +49,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         modificarJB.addActionListener(driver);
         eliminarJB.addActionListener(driver);
         verRespuestasJB.addActionListener(driver);
-        jButton5.addActionListener(driver);
-        jButton6.addActionListener(driver);
+        agregarCancelarJB.addActionListener(driver);
+        agregarGuardarJB.addActionListener(driver);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
         verReactivoJD = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         agregaTipoJCB = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        agregarCancelarJB = new javax.swing.JButton();
+        agregarGuardarJB = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         idTF = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -103,9 +103,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
         jLabel3.setText("Tipo:");
 
-        jButton5.setText("Cancelar");
+        agregarCancelarJB.setText("Cancelar");
 
-        jButton6.setText("Guardar");
+        agregarGuardarJB.setText("Guardar");
 
         jLabel4.setText("ID:");
 
@@ -136,9 +136,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                         .addContainerGap())
                     .addGroup(verReactivoJDLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5)
+                        .addComponent(agregarCancelarJB)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6)
+                        .addComponent(agregarGuardarJB)
                         .addGap(12, 12, 12))))
             .addGroup(verReactivoJDLayout.createSequentialGroup()
                 .addContainerGap()
@@ -173,8 +173,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(verReactivoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton5))
+                    .addComponent(agregarGuardarJB)
+                    .addComponent(agregarCancelarJB))
                 .addContainerGap())
         );
 
@@ -344,14 +344,14 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel abiertaJL;
     private javax.swing.JComboBox<Tipo> agregaTipoJCB;
+    private javax.swing.JButton agregarCancelarJB;
+    private javax.swing.JButton agregarGuardarJB;
     private javax.swing.JButton agregarJB;
     public javax.swing.JLabel completarJL;
     private javax.swing.JTextArea descripcionJTA;
     private javax.swing.JButton eliminarJB;
     public javax.swing.JComboBox<Examen> examenesJCB;
     private javax.swing.JTextField idTF;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -403,9 +403,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
                 if (tabla.getSelectedRow() != -1) {
                     ver();
                 }
-            } else if (src == jButton5) {
+            } else if (src == agregarCancelarJB) {
                 verReactivoJD.setVisible(false);
-            } else if (src == jButton6) {
+            } else if (src == agregarGuardarJB) {
                 if (verReactivoJD.getTitle().equals(tituloAgrega)) {
                     agrega();
                 } else {
@@ -467,8 +467,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             idTF.setText("");
             descripcionJTA.setText("");
 
-            jButton5.setEnabled(true);
-            jButton6.setEnabled(true);
+            agregarCancelarJB.setEnabled(true);
+            agregarGuardarJB.setEnabled(true);
             descripcionJTA.setEnabled(true);
             seleccionaCardTipo();
 
@@ -506,8 +506,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             RespuestaJDBC.cargaRespuestas(getRespuestasPanel(tipo.getId()), idReactivo);
 
             //resto del JDialog
-            jButton5.setEnabled(false);
-            jButton6.setEnabled(false);
+            agregarCancelarJB.setEnabled(false);
+            agregarGuardarJB.setEnabled(false);
 
             verReactivoJD.pack();
             verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
@@ -543,8 +543,8 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
 
             RespuestaJDBC.cargaRespuestas(getRespuestasPanel(tipo.getId()), idReactivo);
             //resto del JDialog
-            jButton5.setEnabled(true);
-            jButton6.setEnabled(true);
+            agregarCancelarJB.setEnabled(true);
+            agregarGuardarJB.setEnabled(true);
 
             verReactivoJD.pack();
             verReactivoJD.setLocationRelativeTo(ReactivosJP.this);
