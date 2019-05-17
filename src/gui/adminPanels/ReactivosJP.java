@@ -398,7 +398,9 @@ public class ReactivosJP extends javax.swing.JPanel implements Updateable {
             if (src == agregarJB) {
                 abreAgregaJD();
             } else if (src == modificarJB) {
-                abreModificaJD();
+                if (tabla.getSelectedRow() != -1) {
+                    abreModificaJD();
+                }
             } else if (src == verRespuestasJB) {
                 if (tabla.getSelectedRow() != -1) {
                     ver();
