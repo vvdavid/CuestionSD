@@ -4,13 +4,15 @@ import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.optionpane.WebOptionPane;
 import java.awt.Color;
 import javax.swing.JMenuItem;
+import pojos.Usuario;
 import tools.GUITools;
 
 public class Menu extends javax.swing.JFrame {
 
-    public Menu() {
+    public Menu(Usuario usuario) {
         initComponents();
         rangoRS.setBackground(Color.getColor("#f0ecec"));
+        nombreJL.setText(usuario.getNombre());
     }
 
     @SuppressWarnings("unchecked")
@@ -39,7 +41,7 @@ public class Menu extends javax.swing.JFrame {
         grafica1JP = new javax.swing.JPanel();
         grafica2JP = new javax.swing.JPanel();
         bienvenidaJL = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nombreJL = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -272,8 +274,8 @@ public class Menu extends javax.swing.JFrame {
         bienvenidaJL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bienvenidaJL.setText("Bienvenido, ");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("nombreDelUsuario");
+        nombreJL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nombreJL.setText("nombreDelUsuario");
 
         jMenu3.setText("Archivo");
 
@@ -323,7 +325,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bienvenidaJL, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(nombreJL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cerrarSesionJB)
                         .addContainerGap())))
@@ -334,7 +336,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nombreJL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bienvenidaJL))
                     .addComponent(cerrarSesionJB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,7 +389,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel hastJL;
     private javax.swing.JTable historialJT;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
@@ -399,6 +400,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel mimimoJL;
+    private javax.swing.JLabel nombreJL;
     private javax.swing.JTabbedPane panelJTP;
     private slider.RangeSlider rangoRS;
     private javax.swing.JTable reactivosJT;
