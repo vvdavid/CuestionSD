@@ -12,6 +12,11 @@ public class Usuario {
         this.pass = pass;
     }
 
+    public Usuario(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
     public int getId() {
         return id;
     }
