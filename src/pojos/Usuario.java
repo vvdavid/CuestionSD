@@ -21,6 +21,10 @@ public class Usuario {
         return id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     @Override
     public String toString() {
         return id + ", " + nombre;
