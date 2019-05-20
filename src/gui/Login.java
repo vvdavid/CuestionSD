@@ -224,7 +224,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        next = usuario.getId() == 0 ? new Admin() : null; //TODO agregar new menu();
+        next = usuario.getId() == 0 ? new Admin() : new Menu(usuario);
         GUITools.openJFrame(this, next);
     }
 
