@@ -11,7 +11,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
-import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -489,6 +488,7 @@ public class Menu extends javax.swing.JFrame {
 
         @Override
         public void mouseReleased(MouseEvent me) {
+            //llamado cada que se cambian los valores del slider
             desdeJS.setValue(rangoRS.getValue());
             hastaJS.setValue(rangoRS.getUpperValue());
 
@@ -497,6 +497,7 @@ public class Menu extends javax.swing.JFrame {
 
         @Override
         public void stateChanged(ChangeEvent ce) {
+            //llamado cada que cambia alguno de los 2 spinner
             rangoRS.setValue((int) desdeJS.getValue());
             rangoRS.setUpperValue((int) hastaJS.getValue());
         }
