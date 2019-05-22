@@ -25,6 +25,20 @@ public class ExamenJDBC {
         }
     }
 
+    public static void cargaComboActivos(JComboBox<Examen> combo) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "SELECT * FROM examen WHERE activo=1");
+                ResultSet rs = ps.executeQuery();) {
+            combo.removeAllItems();
+            while (rs.next()) {
+                combo.addItem(new Examen(rs.getInt(1), rs.getString(2), rs.getBoolean(3)));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
     public static void cargaTabla(JTable tablaExamenJT) {
         try (
                 PreparedStatement ps = DBTools.getConnection().prepareStatement(
