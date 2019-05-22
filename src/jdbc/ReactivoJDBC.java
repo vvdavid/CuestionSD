@@ -7,6 +7,7 @@ import java.sql.Statement;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import pojos.Reactivo;
 import pojos.Tipo;
 import tools.DBTools;
 
@@ -100,6 +101,35 @@ public class ReactivoJDBC {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
+        }
+    }
+
+    public static void cargaReactivosTest(JTable tabla, int id) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "SELECT reactivo.id, reactivo.idExamen, reactivo.idTipo, reactivo.descripcion, tipo.nombre\n"
+                        + "FROM reactivo, tipo\n"
+                        + "WHERE reactivo.idTipo=tipo.id AND reactivo.idExamen=" + id);
+                ResultSet rs = ps.executeQuery();) {
+
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            model.setRowCount(0);
+            int i = 1;
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    true,
+                    i++,
+                    new Reactivo(
+                    rs.getInt(1),
+                    rs.getInt(2),
+                    rs.getInt(3),
+                    rs.getString(4)
+                    ),
+                    rs.getString(5)
+                });
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
         }
     }
 
