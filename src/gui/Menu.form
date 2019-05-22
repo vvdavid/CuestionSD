@@ -120,6 +120,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cerrarSesionJBActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="panelJTP">
 
@@ -148,21 +151,22 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="examenesJCB" pref="844" max="32767" attributes="0"/>
+                              <Component id="examenesJCB" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="905" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="mimimoJL" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="rangoRS" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="rangoRS" min="-2" pref="535" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="actualLowJL" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="desdeJL" min="-2" max="-2" attributes="0"/>
+                              <Component id="desdeJS" min="-2" pref="64" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="actualLowJL1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="hastJL" min="-2" max="-2" attributes="0"/>
+                              <Component id="hastaJS" min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -180,7 +184,7 @@
                                   <Component id="examenesJCB" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="615" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="611" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="mimimoJL" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -191,9 +195,9 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="actualLowJL" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="desdeJL" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="actualLowJL1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="hastJL" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="desdeJS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="hastaJS" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -215,7 +219,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Examen&gt;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
@@ -236,11 +240,6 @@
                 <Property name="text" type="java.lang.String" value="Desde:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="desdeJL">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="999"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JCheckBox" name="aleatorioJCB">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Orden aleatorio"/>
@@ -253,12 +252,11 @@
             </Component>
             <Component class="slider.RangeSlider" name="rangoRS">
               <Properties>
-                <Property name="majorTickSpacing" type="int" value="20"/>
+                <Property name="majorTickSpacing" type="int" value="10"/>
                 <Property name="maximum" type="int" value="500"/>
+                <Property name="minimum" type="int" value="1"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rangoRSMouseReleased"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -272,29 +270,30 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="3">
                         <Column editable="true" title="Selecci&#xf3;n" type="java.lang.Boolean"/>
-                        <Column editable="false" title="ID" type="java.lang.Integer"/>
+                        <Column editable="false" title="N&#xfa;mero" type="java.lang.Integer"/>
                         <Column editable="false" title="Descripci&#xf3;n" type="java.lang.String"/>
-                        <Column editable="false" title="Tipo" type="java.lang.Object"/>
+                        <Column editable="false" title="Tipo" type="java.lang.String"/>
                       </Table>
                     </Property>
+                    <Property name="autoResizeMode" type="int" value="4"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="80" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="400" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="150" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -316,9 +315,18 @@
                 <Property name="text" type="java.lang.String" value="Hasta:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="hastJL">
+            <Component class="javax.swing.JSpinner" name="desdeJS">
               <Properties>
-                <Property name="text" type="java.lang.String" value="999"/>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="hastaJS">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
