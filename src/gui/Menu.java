@@ -28,7 +28,6 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         driver = new Driver();
         addListeners();
-
         rangoRS.setBackground(Color.getColor("#f0ecec"));
         nombreJL.setText(usuario.getNombre());
     }
@@ -49,7 +48,7 @@ public class Menu extends javax.swing.JFrame {
         cerrarSesionJB = new javax.swing.JButton();
         panelJTP = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        examenesJCB = new javax.swing.JComboBox<>();
+        examenesJCB = new javax.swing.JComboBox<Examen>();
         jLabel1 = new javax.swing.JLabel();
         mimimoJL = new javax.swing.JLabel();
         actualLowJL = new javax.swing.JLabel();
@@ -102,6 +101,11 @@ public class Menu extends javax.swing.JFrame {
         rangoRS.setMaximum(500);
         rangoRS.setMinimum(1);
         rangoRS.setPaintTicks(true);
+        rangoRS.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                rangoRSMouseDragged(evt);
+            }
+        });
 
         reactivosJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,9 +145,9 @@ public class Menu extends javax.swing.JFrame {
         actualLowJL1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         actualLowJL1.setText("Hasta:");
 
-        desdeJS.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        desdeJS.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
 
-        hastaJS.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        hastaJS.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -400,6 +404,10 @@ public class Menu extends javax.swing.JFrame {
         GUITools.openJFrame(this, new Login());
     }//GEN-LAST:event_cerrarSesionJBActionPerformed
 
+    private void rangoRSMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rangoRSMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rangoRSMouseDragged
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -442,7 +450,9 @@ public class Menu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private class Driver extends MouseAdapter implements ActionListener, ItemListener, ChangeListener {
-
+        
+        int desdeCU, hastaCU;
+        
         public Driver() {
             ExamenJDBC.cargaComboActivos(examenesJCB);
             cargaReactivos();
@@ -465,6 +475,10 @@ public class Menu extends javax.swing.JFrame {
             hastaJS.setModel(new SpinnerNumberModel(max, 1, max, 1));
             desdeJS.setValue(1);
             hastaJS.setValue(max);
+            
+            desdeCU = (int)desdeJS.getValue();
+            hastaCU = (int)hastaJS.getValue();
+            
         }
 
         //acciones
@@ -491,13 +505,17 @@ public class Menu extends javax.swing.JFrame {
             //llamado cada que se cambian los valores del slider
             desdeJS.setValue(rangoRS.getValue());
             hastaJS.setValue(rangoRS.getUpperValue());
-
-            //
         }
 
         @Override
         public void stateChanged(ChangeEvent ce) {
             //llamado cada que cambia alguno de los 2 spinner
+            if ((int)desdeJS.getValue() == ((int)hastaJS.getValue()+1)) {
+                desdeJS.setValue(desdeCU);
+                hastaJS.setValue(hastaCU);
+            }
+            desdeCU = (int)desdeJS.getValue();
+            hastaCU = (int)hastaJS.getValue();
             rangoRS.setValue((int) desdeJS.getValue());
             rangoRS.setUpperValue((int) hastaJS.getValue());
         }
