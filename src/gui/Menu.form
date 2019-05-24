@@ -257,9 +257,6 @@
                 <Property name="minimum" type="int" value="1"/>
                 <Property name="paintTicks" type="boolean" value="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="rangoRSMouseDragged"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
