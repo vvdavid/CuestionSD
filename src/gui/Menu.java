@@ -2,6 +2,7 @@ package gui;
 
 import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.optionpane.WebOptionPane;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,10 @@ import javax.swing.event.ChangeListener;
 import jdbc.ExamenJDBC;
 import jdbc.ReactivoJDBC;
 import jdbc.TestJDBC;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 import pojos.Examen;
 import pojos.Usuario;
 import tools.GUITools;
@@ -43,6 +48,7 @@ public class Menu extends javax.swing.JFrame {
         rangoRS.addMouseListener(driver);
         desdeJS.addChangeListener(driver);
         hastaJS.addChangeListener(driver);
+        historialJT.addMouseListener(driver);
     }
 
     @SuppressWarnings("unchecked")
@@ -246,17 +252,7 @@ public class Menu extends javax.swing.JFrame {
         rendimientoJB.setText("Ver rendimiento general");
 
         grafica1JP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout grafica1JPLayout = new javax.swing.GroupLayout(grafica1JP);
-        grafica1JP.setLayout(grafica1JPLayout);
-        grafica1JPLayout.setHorizontalGroup(
-            grafica1JPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
-        );
-        grafica1JPLayout.setVerticalGroup(
-            grafica1JPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
-        );
+        grafica1JP.setLayout(new java.awt.BorderLayout());
 
         grafica2JP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -264,7 +260,7 @@ public class Menu extends javax.swing.JFrame {
         grafica2JP.setLayout(grafica2JPLayout);
         grafica2JPLayout.setHorizontalGroup(
             grafica2JPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         grafica2JPLayout.setVerticalGroup(
             grafica2JPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,12 +273,12 @@ public class Menu extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(grafica2JP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(grafica1JP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rendimientoJB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(rendimientoJB, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(grafica1JP, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                    .addComponent(grafica2JP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -293,10 +289,10 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(rendimientoJB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(grafica1JP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(grafica1JP, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(grafica2JP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -441,6 +437,8 @@ public class Menu extends javax.swing.JFrame {
     private class Driver extends MouseAdapter implements ActionListener, ItemListener, ChangeListener {
 
         int desdeActual, hastaActual;
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        JFreeChart chart = ChartFactory.createPieChart("Test seleccionado", dataset);
 
         public Driver() {
             //carga pestaña de seleccion de reactivos
@@ -454,6 +452,9 @@ public class Menu extends javax.swing.JFrame {
             }
             //cargar datos del panel de historial
             cargaTablaHistorial();
+            ChartPanel cp = new ChartPanel(chart);
+            cp.setPreferredSize(grafica1JP.getSize());
+            grafica1JP.add(cp, BorderLayout.CENTER);
         }
 
         //actualizar datos
@@ -497,10 +498,23 @@ public class Menu extends javax.swing.JFrame {
             inicializaSliderYSpinners();
         }
 
+//        llamado cuando se suelta el click en el selector de rango
         @Override
         public void mouseReleased(MouseEvent me) {
             desdeJS.setValue(rangoRS.getValue());
             hastaJS.setValue(rangoRS.getUpperValue());
+        }
+
+        //llamado cuando se selecciona una fila de la tabla del historial
+        @Override
+        public void mousePressed(MouseEvent me) {
+            if (historialJT.getSelectedRow() != -1) {
+                dataset.clear();
+                dataset.setValue("Correctos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 4));
+                dataset.setValue("Incorrectos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 5));
+                
+                grafica1JP.revalidate();
+            }
         }
 
         @Override
