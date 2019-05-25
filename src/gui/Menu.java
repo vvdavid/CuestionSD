@@ -16,6 +16,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import jdbc.ExamenJDBC;
 import jdbc.ReactivoJDBC;
+import jdbc.TestJDBC;
 import pojos.Examen;
 import pojos.Usuario;
 import tools.GUITools;
@@ -23,9 +24,11 @@ import tools.GUITools;
 public class Menu extends javax.swing.JFrame {
 
     private Driver driver;
+    private Usuario usuario;
 
     public Menu(Usuario usuario) {
         initComponents();
+        this.usuario = usuario;
         driver = new Driver();
         addListeners();
 
@@ -99,15 +102,12 @@ public class Menu extends javax.swing.JFrame {
         comenzarJB.setText("Comenzar");
 
         rangoRS.setMajorTickSpacing(10);
-        rangoRS.setMaximum(500);
         rangoRS.setMinimum(1);
         rangoRS.setPaintTicks(true);
 
         reactivosJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Selección", "Número", "Descripción", "Tipo"
@@ -141,9 +141,9 @@ public class Menu extends javax.swing.JFrame {
         actualLowJL1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         actualLowJL1.setText("Hasta:");
 
-        desdeJS.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        desdeJS.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1, 1));
 
-        hastaJS.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        hastaJS.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -209,10 +209,7 @@ public class Menu extends javax.swing.JFrame {
 
         historialJT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Fecha y hora", "Calificación", "Duración", "Reactivos correctos", "Reactivos incorrectos", "Reactivos totales"
@@ -280,7 +277,7 @@ public class Menu extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(grafica2JP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -443,15 +440,25 @@ public class Menu extends javax.swing.JFrame {
 
     private class Driver extends MouseAdapter implements ActionListener, ItemListener, ChangeListener {
 
+        int desdeCU, hastaCU;
+
         public Driver() {
+            //carga pestaña de seleccion de reactivos
             ExamenJDBC.cargaComboActivos(examenesJCB);
-            cargaReactivos();
-            inicializaSliderYSpinners();
+            Examen examen = (Examen) examenesJCB.getSelectedItem();
+            if (examen != null) {
+                cargaReactivos(examen);
+                inicializaSliderYSpinners();
+                desdeCU = (int) desdeJS.getValue();
+                hastaCU = (int) hastaJS.getValue();
+            }
+            //cargar datos del panel de historial
+            cargaTablaHistorial();
         }
 
         //actualizar datos
-        private void cargaReactivos() {
-            ReactivoJDBC.cargaReactivosTest(reactivosJT, ((Examen) examenesJCB.getSelectedItem()).getId());
+        private void cargaReactivos(Examen examen) {
+            ReactivoJDBC.cargaReactivosTest(reactivosJT, examen.getId());
         }
 
         private void inicializaSliderYSpinners() {
@@ -465,6 +472,10 @@ public class Menu extends javax.swing.JFrame {
             hastaJS.setModel(new SpinnerNumberModel(max, 1, max, 1));
             desdeJS.setValue(1);
             hastaJS.setValue(max);
+        }
+
+        private void cargaTablaHistorial() {
+            TestJDBC.cargaTests(usuario.getId(), historialJT);
         }
 
         //acciones
@@ -482,22 +493,24 @@ public class Menu extends javax.swing.JFrame {
 
         @Override
         public void itemStateChanged(ItemEvent ie) {
-            cargaReactivos();
+            cargaReactivos((Examen) examenesJCB.getSelectedItem());
             inicializaSliderYSpinners();
         }
 
         @Override
         public void mouseReleased(MouseEvent me) {
-            //llamado cada que se cambian los valores del slider
             desdeJS.setValue(rangoRS.getValue());
             hastaJS.setValue(rangoRS.getUpperValue());
-
-            //
         }
 
         @Override
         public void stateChanged(ChangeEvent ce) {
-            //llamado cada que cambia alguno de los 2 spinner
+            if ((int) desdeJS.getValue() == ((int) hastaJS.getValue() + 1)) {
+                desdeJS.setValue(desdeCU);
+                hastaJS.setValue(hastaCU);
+            }
+            desdeCU = (int) desdeJS.getValue();
+            hastaCU = (int) hastaJS.getValue();
             rangoRS.setValue((int) desdeJS.getValue());
             rangoRS.setUpperValue((int) hastaJS.getValue());
         }
