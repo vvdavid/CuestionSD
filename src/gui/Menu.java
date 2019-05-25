@@ -440,7 +440,7 @@ public class Menu extends javax.swing.JFrame {
 
     private class Driver extends MouseAdapter implements ActionListener, ItemListener, ChangeListener {
 
-        int desdeCU, hastaCU;
+        int desdeActual, hastaActual;
 
         public Driver() {
             //carga pestaña de seleccion de reactivos
@@ -449,8 +449,8 @@ public class Menu extends javax.swing.JFrame {
             if (examen != null) {
                 cargaReactivos(examen);
                 inicializaSliderYSpinners();
-                desdeCU = (int) desdeJS.getValue();
-                hastaCU = (int) hastaJS.getValue();
+                desdeActual = (int) desdeJS.getValue();
+                hastaActual = (int) hastaJS.getValue();
             }
             //cargar datos del panel de historial
             cargaTablaHistorial();
@@ -506,11 +506,11 @@ public class Menu extends javax.swing.JFrame {
         @Override
         public void stateChanged(ChangeEvent ce) {
             if ((int) desdeJS.getValue() == ((int) hastaJS.getValue() + 1)) {
-                desdeJS.setValue(desdeCU);
-                hastaJS.setValue(hastaCU);
+                desdeJS.setValue(desdeActual);
+                hastaJS.setValue(hastaActual);
             }
-            desdeCU = (int) desdeJS.getValue();
-            hastaCU = (int) hastaJS.getValue();
+            desdeActual = (int) desdeJS.getValue();
+            hastaActual = (int) hastaJS.getValue();
             rangoRS.setValue((int) desdeJS.getValue());
             rangoRS.setUpperValue((int) hastaJS.getValue());
         }
