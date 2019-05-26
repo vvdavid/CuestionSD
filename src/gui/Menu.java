@@ -21,6 +21,7 @@ import jdbc.TestJDBC;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import pojos.Examen;
 import pojos.Usuario;
@@ -255,17 +256,7 @@ public class Menu extends javax.swing.JFrame {
         grafica1JP.setLayout(new java.awt.BorderLayout());
 
         grafica2JP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout grafica2JPLayout = new javax.swing.GroupLayout(grafica2JP);
-        grafica2JP.setLayout(grafica2JPLayout);
-        grafica2JPLayout.setHorizontalGroup(
-            grafica2JPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        grafica2JPLayout.setVerticalGroup(
-            grafica2JPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 337, Short.MAX_VALUE)
-        );
+        grafica2JP.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -291,7 +282,7 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(grafica1JP, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(grafica2JP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(grafica2JP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -438,7 +429,9 @@ public class Menu extends javax.swing.JFrame {
 
         int desdeActual, hastaActual;
         DefaultPieDataset dataset = new DefaultPieDataset();
-        JFreeChart chart = ChartFactory.createPieChart("Test seleccionado", dataset);
+        DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
+        JFreeChart chart = ChartFactory.createPieChart(null, dataset);
+        JFreeChart chart2 = ChartFactory.createBarChart("Tipos por test", "Tipo de reactivo", "Cantidad", dataset2);
 
         public Driver() {
             //carga pestaña de seleccion de reactivos
@@ -453,8 +446,11 @@ public class Menu extends javax.swing.JFrame {
             //cargar datos del panel de historial
             cargaTablaHistorial();
             ChartPanel cp = new ChartPanel(chart);
+            ChartPanel cp2 = new ChartPanel(chart2);
             cp.setPreferredSize(grafica1JP.getSize());
+            cp2.setPreferredSize(grafica2JP.getSize());
             grafica1JP.add(cp, BorderLayout.CENTER);
+            grafica2JP.add(cp2, BorderLayout.CENTER);
         }
 
         //actualizar datos
@@ -513,7 +509,11 @@ public class Menu extends javax.swing.JFrame {
                 dataset.setValue("Correctos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 4));
                 dataset.setValue("Incorrectos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 5));
                 
+                dataset2.clear();
+//                TestJDBC.cargaCuentaDeTipo(dataset2);
+                
                 grafica1JP.revalidate();
+                grafica2JP.revalidate();
             }
         }
 
