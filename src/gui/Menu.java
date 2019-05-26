@@ -499,6 +499,7 @@ public class Menu extends javax.swing.JFrame {
         public void mouseReleased(MouseEvent me) {
             desdeJS.setValue(rangoRS.getValue());
             hastaJS.setValue(rangoRS.getUpperValue());
+            actulizaSeleccion();
         }
 
         //llamado cuando se selecciona una fila de la tabla del historial
@@ -527,6 +528,18 @@ public class Menu extends javax.swing.JFrame {
             hastaActual = (int) hastaJS.getValue();
             rangoRS.setValue((int) desdeJS.getValue());
             rangoRS.setUpperValue((int) hastaJS.getValue());
+            actulizaSeleccion();
+        }
+
+        private void actulizaSeleccion() {
+            int desde = (int) desdeJS.getValue();
+            int hasta = (int) hastaJS.getValue();
+            for (int i = 0; i < reactivosJT.getRowCount(); i++) {
+                reactivosJT.setValueAt(false, i, 0);
+            }
+            for (int i = desde; i <= hasta; i++) {
+                reactivosJT.setValueAt(true, i-1, 0);
+            }
         }
     }
 }
