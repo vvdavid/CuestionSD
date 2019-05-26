@@ -347,9 +347,9 @@
                       <Component id="jScrollPane2" pref="462" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="rendimientoJB" min="-2" pref="395" max="-2" attributes="0"/>
                           <Component id="grafica1JP" alignment="1" pref="446" max="32767" attributes="0"/>
                           <Component id="grafica2JP" alignment="1" max="32767" attributes="0"/>
+                          <Component id="rendimientoJB" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
