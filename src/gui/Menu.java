@@ -509,10 +509,10 @@ public class Menu extends javax.swing.JFrame {
                 dataset.clear();
                 dataset.setValue("Correctos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 4));
                 dataset.setValue("Incorrectos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 5));
-                
+
                 dataset2.clear();
 //                TestJDBC.cargaCuentaDeTipo(dataset2);
-                
+
                 grafica1JP.revalidate();
                 grafica2JP.revalidate();
             }
@@ -538,7 +538,7 @@ public class Menu extends javax.swing.JFrame {
                 reactivosJT.setValueAt(false, i, 0);
             }
             for (int i = desde; i <= hasta; i++) {
-                reactivosJT.setValueAt(true, i-1, 0);
+                reactivosJT.setValueAt(true, i - 1, 0);
             }
         }
     }
