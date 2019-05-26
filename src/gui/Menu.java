@@ -10,6 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.SpinnerNumberModel;
@@ -24,6 +26,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import pojos.Examen;
+import pojos.Reactivo;
 import pojos.Usuario;
 import tools.GUITools;
 
@@ -475,12 +478,26 @@ public class Menu extends javax.swing.JFrame {
             TestJDBC.cargaTests(usuario.getId(), historialJT);
         }
 
+        private void iniciaTest() {
+            ArrayList<Reactivo> array = new ArrayList<>();
+            for (int i = 0; i < reactivosJT.getRowCount(); i++) {
+                if ((boolean) reactivosJT.getValueAt(i, 0)) {
+                    array.add((Reactivo) reactivosJT.getValueAt(i, 2));
+                }
+            }
+            if (aleatorioJCB.isSelected()) {
+                Collections.shuffle(array);
+                System.out.println("aleatorio");
+            }
+            GUITools.openJFrame(Menu.this, new Test(usuario, array));
+        }
+
         //acciones
         @Override
         public void actionPerformed(ActionEvent ae) {
             JButton src = (JButton) ae.getSource();
             if (src == comenzarJB) {
-                System.out.println("comenzar");
+                iniciaTest();
             } else if (src == rendimientoJB) {
                 System.out.println("rendimiento");
             } else {
