@@ -1,7 +1,10 @@
 package gui;
 
+import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.optionpane.WebOptionPane;
-import gui.TestPanels.Abierta;
+import gui.TestPanels.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -20,6 +23,11 @@ public class Test extends javax.swing.JFrame {
         this.reactivos = reactivos;
         initComponents();
         driver = new Driver();
+        addListeners();
+    }
+
+    private void addListeners() {
+        jButton1.addActionListener(driver);
     }
 
     @SuppressWarnings("unchecked")
@@ -144,7 +152,7 @@ public class Test extends javax.swing.JFrame {
 
         descripcionJTA.setEditable(false);
         descripcionJTA.setColumns(20);
-        descripcionJTA.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        descripcionJTA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         descripcionJTA.setLineWrap(true);
         descripcionJTA.setRows(5);
         descripcionJTA.setText("RangeSlider is a slider that can be used to select a range. A regular slider has only one thumb. So it can only be used to select one value. RangeSlider has two thumbs. Each one can be moved independently or both are moved together.\ngetLowValue() will return the value of low range and getHighValue() is the high range.");
@@ -152,17 +160,7 @@ public class Test extends javax.swing.JFrame {
         jScrollPane1.setViewportView(descripcionJTA);
 
         respuestasJP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout respuestasJPLayout = new javax.swing.GroupLayout(respuestasJP);
-        respuestasJP.setLayout(respuestasJPLayout);
-        respuestasJPLayout.setHorizontalGroup(
-            respuestasJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        respuestasJPLayout.setVerticalGroup(
-            respuestasJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 319, Short.MAX_VALUE)
-        );
+        respuestasJP.setLayout(new java.awt.BorderLayout());
 
         jButton1.setText("Contestar y siguiente");
 
@@ -190,11 +188,11 @@ public class Test extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(respuestasJP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(9, 9, 9))
@@ -264,30 +262,7 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        WebLookAndFeel.install();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 ArrayList<Reactivo> array = new ArrayList<Reactivo>();
@@ -327,7 +302,7 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JLabel totalesJL;
     // End of variables declaration//GEN-END:variables
 
-    private class Driver {
+    private class Driver implements ActionListener {
 
         private int i = 0;
 
@@ -345,24 +320,39 @@ public class Test extends javax.swing.JFrame {
             cargaReactivo();
         }
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+//          cargaReactivo();
+        }
+
         private void cargaReactivo() {
             descripcionJTA.setText(reactivos.get(i).getDescripcion());
             respuestasJP.removeAll();
-//            respuestasJP.add(getPanelRespuestasByReactivo(reactivos.get(i)));
+            JPanel panelRespuestas = getPanelRespuestasByReactivo(reactivos.get(i));
+            respuestasJP.add(panelRespuestas);
         }
 
-//        private JPanel getPanelRespuestasByReactivo(Reactivo reactivo) {
+        private JPanel getPanelRespuestasByReactivo(Reactivo reactivo) {
             JPanel panel;
-//            switch (reactivo.getIdTipo()) {
-//                case 1: panel = new MultipleRespuesta();  break;
-//                case 2: panel = new OpcionMultiple();  break;
-//                case 3: panel = new Abierta();  break;
-//                case 4: panel = new Completar();  break;
-//                default: throw new AssertionError();
-//            }
-//            ArrayList<Respuesta> respuestas = RespuestaJDBC.cargaRespuestas();
-//            
-//            return panel;
-//        }
+            switch (reactivo.getIdTipo()) {
+                case 1:
+                    panel = new MultipleRespuesta();
+                    break;
+                case 2:
+                    panel = new OpcionMultiple();
+                    break;
+                case 3:
+                    panel = new Abierta();
+                    break;
+                case 4:
+                    panel = new Completar();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            ((Responsable) panel).cargaRespuestas(RespuestaJDBC.cargaRespuestas(reactivo.getId()));
+            return panel;
+        }
+
     }
 }
