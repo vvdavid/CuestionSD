@@ -322,8 +322,14 @@ public class Test extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            i++;
-            cargaReactivo();
+            califica();
+            actualizaEstadisticas();
+            if (i + 1 == reactivos.size()) {
+                terminar();
+            } else {
+                i++;
+                cargaReactivo();
+            }
         }
 
         private void cargaReactivo() {
@@ -354,6 +360,19 @@ public class Test extends javax.swing.JFrame {
             }
             ((Responsable) panel).cargaRespuestas(RespuestaJDBC.cargaRespuestas(reactivo.getId()));
             return panel;
+        }
+
+        private void califica() {
+//            Responsable respuestasActuales = (Responsable) respuestasJP.getComponent(0);
+            System.out.println("calificando");
+        }
+
+        private void actualizaEstadisticas() {
+            System.out.println("actualozando estadisticas");
+        }
+
+        private void terminar() {
+            System.out.println("terminando");
         }
 
     }
