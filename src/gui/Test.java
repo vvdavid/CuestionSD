@@ -322,7 +322,8 @@ public class Test extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//          cargaReactivo();
+            i++;
+            cargaReactivo();
         }
 
         private void cargaReactivo() {
@@ -330,6 +331,7 @@ public class Test extends javax.swing.JFrame {
             respuestasJP.removeAll();
             JPanel panelRespuestas = getPanelRespuestasByReactivo(reactivos.get(i));
             respuestasJP.add(panelRespuestas);
+            respuestasJP.revalidate();
         }
 
         private JPanel getPanelRespuestasByReactivo(Reactivo reactivo) {
