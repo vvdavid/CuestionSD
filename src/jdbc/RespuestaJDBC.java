@@ -29,6 +29,27 @@ public class RespuestaJDBC {
         }
     }
 
+    public static ArrayList<Respuesta> cargaRespuestas(int idReactivo) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "SELECT * FROM respuesta WHERE idReactivo =" + idReactivo);
+                ResultSet rs = ps.executeQuery();) {
+            ArrayList<Respuesta> respuestas = new ArrayList<>();
+            while (rs.next()) {
+                respuestas.add(new Respuesta(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getBoolean(4)
+                ));
+            }
+            return respuestas;
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return null;
+    }
+
     public static void agrega(ArrayList<Respuesta> respuestas) {
         try {
             for (Respuesta respuesta : respuestas) {
