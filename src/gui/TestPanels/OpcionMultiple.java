@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
 import pojos.Respuesta;
 
@@ -13,6 +14,7 @@ public class OpcionMultiple extends javax.swing.JPanel implements Responsable {
 
     private ArrayList<Respuesta> respuestas;
     private JRadioButton[] radios;
+    private ButtonGroup group;
 
     public OpcionMultiple() {
         initComponents();
@@ -59,9 +61,8 @@ public class OpcionMultiple extends javax.swing.JPanel implements Responsable {
         this.respuestas = respuestas;
 
         Collections.shuffle(respuestas);
-        JRadioButton[] radios = new JRadioButton[respuestas.size()];
-        ButtonGroup group = new ButtonGroup();
-        
+        radios = new JRadioButton[respuestas.size()];
+        group = new ButtonGroup();
         JRadioButton x = new JRadioButton();
         Font font = new Font(x.getFont().getName(), x.getFont().getStyle(), 16);
 
@@ -72,5 +73,21 @@ public class OpcionMultiple extends javax.swing.JPanel implements Responsable {
             jPanel1.add(radios[i]);
             jPanel1.add(Box.createRigidArea(new Dimension(0, 10)));
         }
+    }
+
+    @Override
+    public boolean esCorrecta() {
+        return group.isSelected(getModelo());
+    }
+
+    private ButtonModel getModelo() {
+        ButtonModel modelo = null;
+        for (int i = 0; i < respuestas.size(); i++) {
+            if (respuestas.get(i).isCorrecta()) {
+                modelo = radios[i].getModel();
+                break;
+            }
+        }
+        return modelo;
     }
 }

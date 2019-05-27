@@ -44,4 +44,9 @@ public class Abierta extends javax.swing.JPanel implements Responsable {
     public void cargaRespuestas(ArrayList<Respuesta> respuestas) {
         respuesta = respuestas.get(0);
     }
+
+    @Override
+    public boolean esCorrecta() {
+        return respuesta.getDescripcion().equalsIgnoreCase(jTextField1.getText());
+    }
 }

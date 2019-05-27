@@ -70,4 +70,16 @@ public class MultipleRespuesta extends javax.swing.JPanel implements Responsable
             jPanel1.add(Box.createRigidArea(new Dimension(0, 10)));
         }
     }
+
+//    @Override
+    public boolean esCorrecta() {
+        boolean correcta = true;
+        for (int i = 0; i < respuestas.size(); i++) {
+            if (jCheckBoxes[i].isSelected() != respuestas.get(i).isCorrecta()) {
+                correcta = false;
+                break;
+            }
+        }
+        return correcta;
+    }
 }

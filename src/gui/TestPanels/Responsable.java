@@ -7,5 +7,5 @@ public interface Responsable {
 
     void cargaRespuestas(ArrayList<Respuesta> respuestas);
 
-//    boolean esCorrecta();
+    boolean esCorrecta();
 }

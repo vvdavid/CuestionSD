@@ -10,6 +10,7 @@ import pojos.Respuesta;
 public class Completar extends javax.swing.JPanel implements Responsable {
 
     private ArrayList<Respuesta> respuestas;
+    private JTextField[] textFields;
 
     public Completar() {
         initComponents();
@@ -55,9 +56,8 @@ public class Completar extends javax.swing.JPanel implements Responsable {
     public void cargaRespuestas(ArrayList<Respuesta> respuestas) {
         this.respuestas = respuestas;
 
-        Collections.shuffle(respuestas);
         JLabel[] labels = new JLabel[respuestas.size()];
-        JTextField[] textFields = new JTextField[respuestas.size()];
+        textFields = new JTextField[respuestas.size()];
 
         JLabel x = new JLabel();
         Font font = new Font(x.getFont().getName(), x.getFont().getStyle(), 16);
@@ -65,12 +65,24 @@ public class Completar extends javax.swing.JPanel implements Responsable {
         for (int i = 0; i < respuestas.size(); i++) {
             labels[i] = new JLabel("Espacio " + (i + 1) + ":");
             textFields[i] = new JTextField(3);
-            
+
             labels[i].setFont(font);
             textFields[i].setFont(font);
-            
+
             jPanel1.add(labels[i]);
             jPanel1.add(textFields[i]);
         }
+    }
+
+    @Override
+    public boolean esCorrecta() {
+        boolean correcta = true;
+        for (int i = 0; i < respuestas.size(); i++) {
+            if (!textFields[i].getText().equalsIgnoreCase(respuestas.get(i).getDescripcion())) {
+                correcta = false;
+                break;
+            }
+        }
+        return correcta;
     }
 }
