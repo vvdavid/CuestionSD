@@ -2,15 +2,24 @@ package gui;
 
 import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.optionpane.WebOptionPane;
+import com.alee.managers.notification.NotificationIcon;
+import com.alee.managers.notification.NotificationManager;
+import com.alee.managers.notification.WebNotification;
 import gui.TestPanels.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import jdbc.RespuestaJDBC;
 import pojos.Reactivo;
 import pojos.Usuario;
+import tools.GUITools;
 
 public class Test extends javax.swing.JFrame {
 
@@ -34,6 +43,9 @@ public class Test extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        resultadosJD = new javax.swing.JDialog();
+        porcentajeJL = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -58,6 +70,25 @@ public class Test extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+
+        resultadosJD.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        resultadosJD.setTitle("Resultados del test");
+        resultadosJD.setModal(true);
+        resultadosJD.setResizable(false);
+        resultadosJD.getContentPane().setLayout(new java.awt.BorderLayout(20, 20));
+
+        porcentajeJL.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        porcentajeJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        porcentajeJL.setText("100.00%");
+        resultadosJD.getContentPane().add(porcentajeJL, java.awt.BorderLayout.NORTH);
+
+        jButton2.setText("Terminar test");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        resultadosJD.getContentPane().add(jButton2, java.awt.BorderLayout.PAGE_END);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,7 +205,7 @@ public class Test extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(respuestasJP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1))
@@ -188,11 +219,11 @@ public class Test extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addComponent(respuestasJP, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(9, 9, 9))
@@ -261,6 +292,11 @@ public class Test extends javax.swing.JFrame {
                 WebOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        resultadosJD.setVisible(false);
+        GUITools.openJFrame(this, new Menu(usuario));
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
         WebLookAndFeel.install();
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -281,6 +317,7 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JTextArea descripcionJTA;
     private javax.swing.JLabel incorrectosJL;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -296,8 +333,10 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel porcentajeJL;
     private javax.swing.JPanel respuestasJP;
     private javax.swing.JLabel restantesJL;
+    private javax.swing.JDialog resultadosJD;
     private javax.swing.JLabel tiempoJL;
     private javax.swing.JLabel totalesJL;
     // End of variables declaration//GEN-END:variables
@@ -308,9 +347,9 @@ public class Test extends javax.swing.JFrame {
 
         public Driver() {
             //inicializa labels
-            totalesJL.setText("0");
+            totalesJL.setText("" + reactivos.size());
             contestadosJL.setText("0");
-            restantesJL.setText("0");
+            restantesJL.setText("" + reactivos.size());
 
             correctosJL.setText("0");
             incorrectosJL.setText("0");
@@ -322,8 +361,11 @@ public class Test extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            califica();
-            actualizaEstadisticas();
+            Responsable respuestasActuales = (Responsable) respuestasJP.getComponent(0);
+            boolean correcto = respuestasActuales.esCorrecta();
+
+            califica(correcto);
+            actualizaEstadisticas(correcto);
             if (i + 1 == reactivos.size()) {
                 terminar();
             } else {
@@ -362,17 +404,35 @@ public class Test extends javax.swing.JFrame {
             return panel;
         }
 
-        private void califica() {
-//            Responsable respuestasActuales = (Responsable) respuestasJP.getComponent(0);
-            System.out.println("calificando");
+        private void califica(boolean correcto) {
+            WebNotification notificationPopup = new WebNotification();
+            notificationPopup.setIcon(correcto ? NotificationIcon.plus : NotificationIcon.cross);
+            notificationPopup.setDisplayTime(2000);
+            notificationPopup.setContent("Respuesta " + (!correcto ? "in" : "") + "correcta");
+
+            NotificationManager.showNotification(notificationPopup);
         }
 
-        private void actualizaEstadisticas() {
-            System.out.println("actualozando estadisticas");
+        private void actualizaEstadisticas(boolean correcto) {
+            //contestados
+            contestadosJL.setText("" + (Integer.parseInt(contestadosJL.getText()) + 1));
+            //restantes
+            restantesJL.setText("" + (Integer.parseInt(restantesJL.getText()) - 1));
+            //correstos o incorrectos
+            JLabel label = correcto ? correctosJL : incorrectosJL;
+            label.setText("" + (Integer.parseInt(label.getText()) + 1));
+
         }
 
         private void terminar() {
-            System.out.println("terminando");
+            resultadosJD.add(jPanel1, BorderLayout.CENTER);
+            double calificacion = Double.parseDouble(correctosJL.getText()) / Integer.parseInt(totalesJL.getText());
+            porcentajeJL.setText(String.format("%.2f%%", calificacion));
+            porcentajeJL.setForeground(calificacion > 60 ? Color.GREEN : Color.RED);
+
+            resultadosJD.pack();
+            resultadosJD.setLocationRelativeTo(Test.this);
+            resultadosJD.setVisible(true);
         }
 
     }
