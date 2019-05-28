@@ -86,4 +86,18 @@ public class TestJDBC {
             return null;
         }
     }
+
+    public static void cargaTiposDeTest(int idTest, DefaultCategoryDataset dataset) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "select t.nombre, count(r.idTipo) from reactivo r, tipo t where r.idTipo = t.id and r.id in (select idReactivo from detalle where idTest = ?) group by idTipo;");) {
+            ps.setInt(1, idTest);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dataset.addValue(rs.getInt(2), rs.getString(1), "Tipo");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
 }

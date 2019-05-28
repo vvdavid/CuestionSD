@@ -577,7 +577,7 @@ public class Menu extends javax.swing.JFrame {
                 dataset.setValue("Incorrectos", (int) historialJT.getValueAt(historialJT.getSelectedRow(), 5));
 
                 dataset2.clear();
-//                TestJDBC.cargaCuentaDeTipo(dataset2);
+                TestJDBC.cargaTiposDeTest((int) historialJT.getValueAt(historialJT.getSelectedRow(), 0), dataset2);
 
                 grafica1JP.revalidate();
                 grafica2JP.revalidate();
@@ -640,7 +640,7 @@ public class Menu extends javax.swing.JFrame {
         private void cargarAPanel(JFreeChart chart, JPanel target) {
             CategoryAxis axis1 = chart.getCategoryPlot().getDomainAxis();
             axis1.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
-            
+
             ChartPanel cp = new ChartPanel(chart);
             cp.setSize(target.getSize());
             target.add(cp);
