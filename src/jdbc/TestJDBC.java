@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.data.category.DefaultCategoryDataset;
 import tools.DBTools;
 
 public class TestJDBC {
@@ -67,6 +68,22 @@ public class TestJDBC {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
+        }
+    }
+
+    public static DefaultCategoryDataset cargaBarras(int idUsuario) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "SELECT strftime('%d-%m-%Y',fecha) soloFecha, COUNT(*) FROM test WHERE idUsuario = 1 GROUP BY soloFecha");
+                ResultSet rs = ps.executeQuery();) {
+            DefaultCategoryDataset barDataset = new DefaultCategoryDataset();
+            while (rs.next()) {
+                barDataset.addValue(rs.getInt(2), "Resueltos", rs.getString(1));
+            }
+            return barDataset;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            return null;
         }
     }
 }
