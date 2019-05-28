@@ -8,14 +8,16 @@ import com.alee.managers.notification.WebNotification;
 import gui.TestPanels.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
+import javax.swing.Timer;
 import jdbc.RespuestaJDBC;
 import pojos.Reactivo;
 import pojos.Usuario;
@@ -104,7 +106,7 @@ public class Test extends javax.swing.JFrame {
 
         correctosJL.setText("999,999");
 
-        tiempoJL.setText("999,999");
+        tiempoJL.setText("0");
 
         jLabel4.setText("Totales:");
 
@@ -132,9 +134,9 @@ public class Test extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tiempoJL)
-                            .addComponent(correctosJL)
-                            .addComponent(incorrectosJL)))
+                            .addComponent(correctosJL, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tiempoJL, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(incorrectosJL, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -344,6 +346,8 @@ public class Test extends javax.swing.JFrame {
     private class Driver implements ActionListener {
 
         private int i = 0;
+        private int time = 0;
+        private Timer timer;
 
         public Driver() {
             //inicializa labels
@@ -354,7 +358,30 @@ public class Test extends javax.swing.JFrame {
             correctosJL.setText("0");
             incorrectosJL.setText("0");
 
-            tiempoJL.setText("0");
+            DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    time+=1000;
+                    String sign = "";
+                    if (time < 0) {
+                        sign = "-";
+                        time = Math.abs(time);
+                    }
+
+                    long minutes = time / TimeUnit.MINUTES.toMillis(1);
+                    long seconds = time % TimeUnit.MINUTES.toMillis(1) / TimeUnit.SECONDS.toMillis(1);
+
+                    StringBuilder formatted = new StringBuilder(20);
+                    formatted.append(sign);
+                    formatted.append(String.format("%02d", minutes));
+                    formatted.append(String.format(":%02d", seconds));
+
+                    tiempoJL.setText(formatted.toString());
+                }
+            });
+            timer.start();
+//            tiempoJL.setText("0");
             //carga primer reactivo
             cargaReactivo();
         }
@@ -425,6 +452,7 @@ public class Test extends javax.swing.JFrame {
         }
 
         private void terminar() {
+            timer.stop();
             resultadosJD.add(jPanel1, BorderLayout.CENTER);
             double calificacion = Double.parseDouble(correctosJL.getText()) / Integer.parseInt(totalesJL.getText());
             porcentajeJL.setText(String.format("%.2f%%", calificacion));

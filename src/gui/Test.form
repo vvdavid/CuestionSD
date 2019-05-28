@@ -154,9 +154,9 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tiempoJL" min="-2" max="-2" attributes="0"/>
-                              <Component id="correctosJL" min="-2" max="-2" attributes="0"/>
-                              <Component id="incorrectosJL" min="-2" max="-2" attributes="0"/>
+                              <Component id="correctosJL" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="tiempoJL" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="incorrectosJL" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -245,7 +245,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="tiempoJL">
           <Properties>
-            <Property name="text" type="java.lang.String" value="999,999"/>
+            <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
