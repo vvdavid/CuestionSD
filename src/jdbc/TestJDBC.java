@@ -3,11 +3,35 @@ package jdbc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import tools.DBTools;
 
 public class TestJDBC {
+
+    public static int agrega(int idUsuario, double calificacion, int buenas, int malas, int total, int duracion) {
+        try (
+                PreparedStatement ps = DBTools.getConnection().prepareStatement(
+                        "INSERT INTO Test (idUsuario, calificacion, buenas, malas, total, fecha, duracion)"
+                        + "VALUES (?,?,?,?,?,datetime('now', 'localtime'),?)",
+                        Statement.RETURN_GENERATED_KEYS);) {
+            ps.setInt(1, idUsuario);
+            ps.setDouble(2, calificacion);
+            ps.setInt(3, buenas);
+            ps.setInt(4, malas);
+            ps.setInt(5, total);
+            ps.setInt(6, duracion);
+            ps.executeUpdate();
+
+            ResultSet keys = ps.getGeneratedKeys();
+            keys.next();
+            return keys.getInt(1);
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return 0;
+    }
 
     public static void cargaTests(int idUsuario, JTable tabla) {
         try (
@@ -22,15 +46,27 @@ public class TestJDBC {
                     rs.getInt(1),
                     rs.getString(2),
                     rs.getDouble(3),
-                    rs.getInt(4)/1000,
+                    rs.getInt(4) / 1000,
                     rs.getInt(5),
                     rs.getInt(6),
-                    rs.getInt(7),
-                });
+                    rs.getInt(7),});
             }
         } catch (SQLException e) {
             System.err.println(e);
         }
 
+    }
+
+    public static void actualiza(int idTest, double calificacion, int correctos, int incorrectos, int time) {
+        try (PreparedStatement ps = DBTools.getConnection().prepareStatement("UPDATE Test set calificacion=?, buenas=?, malas=?, duracion=? WHERE id=?")) {
+            ps.setDouble(1, calificacion * 100);
+            ps.setInt(2, correctos);
+            ps.setInt(3, incorrectos);
+            ps.setInt(4, time);
+            ps.setInt(5, idTest);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 }
