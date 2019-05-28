@@ -18,7 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import jdbc.DetalleJDBC;
 import jdbc.RespuestaJDBC;
+import jdbc.TestJDBC;
 import pojos.Reactivo;
 import pojos.Usuario;
 import tools.GUITools;
@@ -348,6 +350,7 @@ public class Test extends javax.swing.JFrame {
         private int i = 0;
         private int time = 0;
         private Timer timer;
+        private int idTest;
 
         public Driver() {
             //inicializa labels
@@ -357,6 +360,8 @@ public class Test extends javax.swing.JFrame {
 
             correctosJL.setText("0");
             incorrectosJL.setText("0");
+            //inserta test
+            idTest = TestJDBC.agrega(usuario.getId(), 0, 0, 0, reactivos.size(), 0);
             //carga primer reactivo
             cargaReactivo();
             //inicia timer
@@ -391,6 +396,7 @@ public class Test extends javax.swing.JFrame {
 
             califica(correcto);
             actualizaEstadisticas(correcto);
+            DetalleJDBC.agrega(idTest, reactivos.get(i).getId(), correcto);
             if (i + 1 == reactivos.size()) {
                 terminar();
             } else {
@@ -459,6 +465,8 @@ public class Test extends javax.swing.JFrame {
             resultadosJD.pack();
             resultadosJD.setLocationRelativeTo(Test.this);
             resultadosJD.setVisible(true);
+            //actualizar registro de test
+            TestJDBC.actualiza(idTest, calificacion, Integer.parseInt(correctosJL.getText()), Integer.parseInt(incorrectosJL.getText()), time);
         }
 
     }
