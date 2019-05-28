@@ -357,11 +357,13 @@ public class Test extends javax.swing.JFrame {
 
             correctosJL.setText("0");
             incorrectosJL.setText("0");
-
+            //carga primer reactivo
+            cargaReactivo();
+            //inicia timer
             timer = new Timer(1000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    time+=1000;
+                    time += 1000;
                     String sign = "";
                     if (time < 0) {
                         sign = "-";
@@ -380,8 +382,6 @@ public class Test extends javax.swing.JFrame {
                 }
             });
             timer.start();
-            //carga primer reactivo
-            cargaReactivo();
         }
 
         @Override
