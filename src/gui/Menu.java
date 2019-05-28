@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -23,6 +24,8 @@ import jdbc.TestJDBC;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import pojos.Examen;
@@ -59,6 +62,10 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rendimientoJD = new javax.swing.JDialog();
+        graficaRendimiento1JP = new javax.swing.JPanel();
+        graficaRendimiento3JP = new javax.swing.JPanel();
+        graficaRendimiento2JP = new javax.swing.JPanel();
         cerrarSesionJB = new javax.swing.JButton();
         panelJTP = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -88,6 +95,44 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+
+        rendimientoJD.setTitle("Rendimiento general");
+        rendimientoJD.setModal(true);
+
+        graficaRendimiento1JP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        graficaRendimiento1JP.setLayout(new java.awt.BorderLayout());
+
+        graficaRendimiento3JP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        graficaRendimiento3JP.setLayout(new java.awt.BorderLayout());
+
+        graficaRendimiento2JP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        graficaRendimiento2JP.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout rendimientoJDLayout = new javax.swing.GroupLayout(rendimientoJD.getContentPane());
+        rendimientoJD.getContentPane().setLayout(rendimientoJDLayout);
+        rendimientoJDLayout.setHorizontalGroup(
+            rendimientoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rendimientoJDLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(rendimientoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(graficaRendimiento3JP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(rendimientoJDLayout.createSequentialGroup()
+                        .addComponent(graficaRendimiento1JP, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(graficaRendimiento2JP, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        rendimientoJDLayout.setVerticalGroup(
+            rendimientoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rendimientoJDLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(rendimientoJDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(graficaRendimiento1JP, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(graficaRendimiento2JP, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(graficaRendimiento3JP, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú");
@@ -196,7 +241,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(examenesJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(mimimoJL)
@@ -267,7 +312,7 @@ public class Menu extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(grafica1JP, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
@@ -286,7 +331,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(grafica1JP, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(grafica2JP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -407,6 +452,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Examen> examenesJCB;
     private javax.swing.JPanel grafica1JP;
     private javax.swing.JPanel grafica2JP;
+    private javax.swing.JPanel graficaRendimiento1JP;
+    private javax.swing.JPanel graficaRendimiento2JP;
+    private javax.swing.JPanel graficaRendimiento3JP;
     private javax.swing.JSpinner hastaJS;
     private javax.swing.JTable historialJT;
     private javax.swing.JLabel jLabel1;
@@ -426,6 +474,7 @@ public class Menu extends javax.swing.JFrame {
     private slider.RangeSlider rangoRS;
     private javax.swing.JTable reactivosJT;
     private javax.swing.JButton rendimientoJB;
+    private javax.swing.JDialog rendimientoJD;
     // End of variables declaration//GEN-END:variables
 
     private class Driver extends MouseAdapter implements ActionListener, ItemListener, ChangeListener {
@@ -499,7 +548,7 @@ public class Menu extends javax.swing.JFrame {
             if (src == comenzarJB) {
                 iniciaTest();
             } else if (src == rendimientoJB) {
-                System.out.println("rendimiento");
+                abreRendimiento();
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -557,6 +606,44 @@ public class Menu extends javax.swing.JFrame {
             for (int i = desde; i <= hasta; i++) {
                 reactivosJT.setValueAt(true, i - 1, 0);
             }
+        }
+
+        private void abreRendimiento() {
+            //grafica 1
+            DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+            for (int i = 0; i < historialJT.getRowCount(); i++) {
+                dataset1.addValue((double) historialJT.getValueAt(i, 2), "Calificación", (String) historialJT.getValueAt(i, 1));
+            }
+            JFreeChart g1 = ChartFactory.createLineChart("Calificación por test", "Fecha de test", "Calificación", dataset1);
+            wea(g1, graficaRendimiento1JP);
+
+            //grafica 2
+            DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
+            for (int i = 0; i < historialJT.getRowCount(); i++) {
+                dataset2.addValue((int) historialJT.getValueAt(i, 4), "Correctos", (String) historialJT.getValueAt(i, 1));
+                dataset2.addValue((int) historialJT.getValueAt(i, 6), "Totales", (String) historialJT.getValueAt(i, 1));
+            }
+            JFreeChart g2 = ChartFactory.createLineChart("Relación total-correctos por test", "Fecha de test", "Número de reactivos", dataset2);
+
+            wea(g2, graficaRendimiento2JP);
+            //grafica 3
+            DefaultCategoryDataset dataset3 = TestJDBC.cargaBarras(usuario.getId());
+            JFreeChart g3 = ChartFactory.createBarChart("Tests por día", "Día del test", "Cantidad de tests", dataset3);
+
+            wea(g3, graficaRendimiento3JP);
+            //abrir dialog
+            rendimientoJD.pack();
+            rendimientoJD.setLocationRelativeTo(Menu.this);
+            rendimientoJD.setVisible(true);
+        }
+
+        private void wea(JFreeChart chart, JPanel target) {
+            CategoryAxis axis1 = chart.getCategoryPlot().getDomainAxis();
+            axis1.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
+            
+            ChartPanel cp = new ChartPanel(chart);
+            cp.setSize(target.getSize());
+            target.add(cp);
         }
     }
 }
