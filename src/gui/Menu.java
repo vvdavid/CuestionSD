@@ -615,7 +615,7 @@ public class Menu extends javax.swing.JFrame {
                 dataset1.addValue((double) historialJT.getValueAt(i, 2), "Calificación", (String) historialJT.getValueAt(i, 1));
             }
             JFreeChart g1 = ChartFactory.createLineChart("Calificación por test", "Fecha de test", "Calificación", dataset1);
-            wea(g1, graficaRendimiento1JP);
+            cargarAPanel(g1, graficaRendimiento1JP);
 
             //grafica 2
             DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
@@ -625,19 +625,19 @@ public class Menu extends javax.swing.JFrame {
             }
             JFreeChart g2 = ChartFactory.createLineChart("Relación total-correctos por test", "Fecha de test", "Número de reactivos", dataset2);
 
-            wea(g2, graficaRendimiento2JP);
+            cargarAPanel(g2, graficaRendimiento2JP);
             //grafica 3
             DefaultCategoryDataset dataset3 = TestJDBC.cargaBarras(usuario.getId());
             JFreeChart g3 = ChartFactory.createBarChart("Tests por día", "Día del test", "Cantidad de tests", dataset3);
 
-            wea(g3, graficaRendimiento3JP);
+            cargarAPanel(g3, graficaRendimiento3JP);
             //abrir dialog
             rendimientoJD.pack();
             rendimientoJD.setLocationRelativeTo(Menu.this);
             rendimientoJD.setVisible(true);
         }
 
-        private void wea(JFreeChart chart, JPanel target) {
+        private void cargarAPanel(JFreeChart chart, JPanel target) {
             CategoryAxis axis1 = chart.getCategoryPlot().getDomainAxis();
             axis1.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
             
