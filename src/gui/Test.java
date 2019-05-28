@@ -358,7 +358,6 @@ public class Test extends javax.swing.JFrame {
             correctosJL.setText("0");
             incorrectosJL.setText("0");
 
-            DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
             timer = new Timer(1000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -381,7 +380,6 @@ public class Test extends javax.swing.JFrame {
                 }
             });
             timer.start();
-//            tiempoJL.setText("0");
             //carga primer reactivo
             cargaReactivo();
         }
