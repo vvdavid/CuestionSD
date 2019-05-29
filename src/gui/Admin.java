@@ -63,7 +63,7 @@ public class Admin extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cuestion - Administrador");
+        setTitle("Administrador - Cuestion");
 
         adminExamenesJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/test.png"))); // NOI18N
         adminExamenesJB.setText("Administrar examenes");

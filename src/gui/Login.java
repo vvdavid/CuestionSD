@@ -51,7 +51,7 @@ public class Login extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inicio de sesión");
+        setTitle("Inicio de sesión  - Cuestion");
         setResizable(false);
 
         olvideJB.setText("Olvidé mi contraseña");

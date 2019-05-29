@@ -135,7 +135,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Menú");
+        setTitle("Menú  - Cuestion");
 
         cerrarSesionJB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         cerrarSesionJB.setText("Cerrar sesión");

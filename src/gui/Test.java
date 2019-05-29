@@ -93,6 +93,7 @@ public class Test extends javax.swing.JFrame {
         resultadosJD.getContentPane().add(jButton2, java.awt.BorderLayout.PAGE_END);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Test  - Cuestion");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Estadísticas"));
 

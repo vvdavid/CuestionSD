@@ -45,7 +45,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Inicio de sesi&#xf3;n"/>
+    <Property name="title" type="java.lang.String" value="Inicio de sesi&#xf3;n  - Cuestion"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
