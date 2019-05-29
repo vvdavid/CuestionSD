@@ -463,9 +463,10 @@ public class Test extends javax.swing.JFrame {
 
             resultadosJD.pack();
             resultadosJD.setLocationRelativeTo(Test.this);
-            resultadosJD.setVisible(true);
             //actualizar registro de test
             TestJDBC.actualiza(idTest, calificacion, Integer.parseInt(correctosJL.getText()), Integer.parseInt(incorrectosJL.getText()), time);
+            resultadosJD.setVisible(true);
+
         }
 
     }
